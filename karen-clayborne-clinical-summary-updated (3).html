@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Summary — Karen Clayborne | CNS Metastasis | Updated May 26, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0392b;
+    --red-light: #f9edec;
+    --amber: #d4820a;
+    --amber-light: #fef8ed;
+    --green: #1a7a4a;
+    --green-light: #edf7f2;
+    --navy: #0d1b2a;
+    --slate: #3d4f63;
+    --muted: #6b7c8d;
+    --border: #d6dde4;
+    --bg: #f4f6f8;
+    --white: #ffffff;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --serif: 'IBM Plex Serif', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--navy); font-size: 14px; line-height: 1.6; }
+
+  .header { background: var(--navy); color: white; padding: 0; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,.03) 60px, rgba(255,255,255,.03) 61px); pointer-events: none; }
+  .header-inner { max-width: 960px; margin: 0 auto; padding: 32px 24px 28px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
+  .urgent-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--red); color: white; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; margin-bottom: 10px; }
+  .urgent-badge::before { content: '●'; font-size: 8px; }
+  .header h1 { font-family: var(--serif); font-size: 26px; font-weight: 600; letter-spacing: -.01em; line-height: 1.25; margin-bottom: 6px; color: white; }
+  .header-sub { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .04em; }
+  .patient-box { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 14px 18px; min-width: 220px; }
+  .patient-box .label { font-family: var(--mono); font-size: 9px; color: rgba(255,255,255,.45); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
+  .patient-box .value { font-size: 13px; font-weight: 500; color: white; line-height: 1.4; }
+  .patient-box .row { margin-bottom: 10px; }
+  .patient-box .row:last-child { margin-bottom: 0; }
+
+  .main { max-width: 960px; margin: 0 auto; padding: 24px; display: grid; gap: 20px; }
+
+  .alert { background: var(--red); color: white; border-radius: 6px; padding: 16px 20px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+  .alert.amber-alert { background: #b36800; }
+  .alert.green-alert { background: var(--green); }
+  .alert-icon { font-size: 28px; line-height: 1; }
+  .alert-text strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+  .alert-text span { font-size: 13px; opacity: .88; }
+
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .card-header { padding: 12px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; background: #f8f9fb; }
+  .card-header h2 { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--slate); }
+  .card-header .icon { font-size: 14px; }
+  .card-header .icon-text {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: #e4e9ef;
+    color: var(--slate);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .card-body { padding: 18px; }
+
+  .snapshot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (min-width: 600px) { .snapshot-grid { grid-template-columns: repeat(4, 1fr); } }
+  .snapshot-item { border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; }
+  .snapshot-item .s-label { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+  .snapshot-item .s-value { font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.2; }
+  .snapshot-item .s-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .snapshot-item.red { border-color: #e8c0bd; background: var(--red-light); }
+  .snapshot-item.red .s-value { color: var(--red); }
+  .snapshot-item.amber { border-color: #e8d4a0; background: var(--amber-light); }
+  .snapshot-item.amber .s-value { color: var(--amber); }
+  .snapshot-item.green { border-color: #b8d4b8; background: var(--green-light); }
+  .snapshot-item.green .s-value { color: var(--green); }
+
+  .lesion-chart { position: relative; padding-bottom: 8px; }
+  .chart-rows { display: grid; gap: 10px; }
+  .chart-row { display: grid; grid-template-columns: 80px 1fr 60px; gap: 10px; align-items: center; }
+  .chart-date { font-family: var(--mono); font-size: 10px; color: var(--muted); text-align: right; }
+  .bar-wrap { background: #eef0f3; border-radius: 3px; height: 22px; position: relative; overflow: hidden; }
+  .bar { height: 100%; border-radius: 3px; display: flex; align-items: center; padding-left: 8px; }
+  .bar-label { font-family: var(--mono); font-size: 10px; font-weight: 600; color: white; white-space: nowrap; }
+  .chart-size { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--navy); }
+  .chart-event { font-size: 10px; color: var(--muted); font-style: italic; margin-left: 90px; margin-top: -4px; margin-bottom: 2px; }
+  .bar.b1 { background: #4a90d9; }
+  .bar.b2 { background: var(--green); }
+  .bar.b3 { background: var(--amber); }
+  .bar.b4 { background: #c07000; }
+  .bar.b5 { background: var(--red); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  thead tr { background: #f0f2f5; border-bottom: 2px solid var(--border); }
+  thead th { padding: 9px 12px; text-align: left; font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid #eef0f3; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 9px 12px; vertical-align: top; line-height: 1.4; }
+  tbody tr:hover { background: #f8f9fb; }
+  .size-pill { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 3px; background: #e8edf2; color: var(--navy); white-space: nowrap; }
+  .size-pill.current { background: var(--red); color: white; }
+  .size-pill.best { background: var(--green-light); color: var(--green); }
+  .size-pill.new { background: #d4820a; color: white; }
+  .doc-link { display: inline-flex; align-items: center; gap: 4px; color: #1a5fb4; text-decoration: none; font-size: 11px; font-family: var(--mono); padding: 2px 6px; border: 1px solid #c0d4f0; border-radius: 3px; background: #f0f5fd; white-space: nowrap; transition: background .15s; }
+  .doc-link:hover { background: #d8e8fc; }
+  .row-critical td { background: #fdf4f4; }
+  .row-critical td:first-child { border-left: 3px solid var(--red); }
+  .row-new td { background: #fffbf0; }
+  .row-new td:first-child { border-left: 3px solid var(--amber); }
+  .row-good td { background: #f0f9f4; }
+  .row-good td:first-child { border-left: 3px solid var(--green); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .header-inner { grid-template-columns: 1fr; } .patient-box { min-width: auto; } }
+
+  .symptom-list { display: grid; gap: 8px; }
+  .symptom-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 5px; border: 1px solid var(--border); background: #fafbfc; }
+  .symptom-row.red { border-color: #e8c0bd; background: var(--red-light); }
+  .symptom-row.green { border-color: #b8d4b8; background: var(--green-light); }
+  .sym-icon { font-size: 16px; line-height: 1.3; flex-shrink: 0; }
+  .sym-text strong { display: block; font-size: 12.5px; font-weight: 600; }
+  .sym-text span { font-size: 11px; color: var(--muted); }
+
+  .action-list { display: grid; gap: 10px; }
+  .action-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border); background: #fafbfc; }
+  .action-num { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--navy); opacity: .18; line-height: 1; flex-shrink: 0; width: 28px; }
+  .action-body strong { display: block; font-size: 13px; font-weight: 600; }
+  .action-body span { font-size: 11.5px; color: var(--slate); }
+
+  .mol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .mol-item { border-radius: 6px; border: 1px solid var(--border); padding: 12px 14px; background: #fafbfc; }
+  .mol-item .m-label { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
+  .mol-item .m-value { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .mol-item .m-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .mol-item.positive { border-color: #b8d4b8; background: var(--green-light); }
+  .mol-item.positive .m-value { color: var(--green); }
+  .mol-item.flag { border-color: #e8c0bd; background: var(--red-light); }
+  .mol-item.flag .m-value { color: var(--red); }
+
+  .labs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .lab-group h4 { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .lab-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px solid #f0f2f5; font-size: 12px; }
+  .lab-row:last-child { border-bottom: none; }
+  .lab-name { color: var(--slate); }
+  .lab-val { font-family: var(--mono); font-weight: 600; color: var(--navy); }
+  .lab-val.hi { color: var(--red); }
+  .lab-val.lo { color: #1a5fb4; }
+  .lab-ref { font-size: 10px; color: var(--muted); margin-left: 6px; }
+
+  .med-list { display: grid; gap: 6px; }
+  .med-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; border-radius: 5px; border: 1px solid var(--border); background: #fafbfc; font-size: 12.5px; }
+  .med-badge { font-family: var(--mono); font-size: 9px; padding: 2px 6px; border-radius: 2px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .med-badge.onc { background: #ddeaf9; color: #1a5fb4; }
+  .med-badge.neuro { background: var(--red-light); color: var(--red); }
+  .med-badge.cv { background: #f0e8f5; color: #6b3da6; }
+  .med-badge.anticoag { background: var(--amber-light); color: var(--amber); }
+  .med-badge.dm { background: var(--green-light); color: var(--green); }
+  .med-name { font-weight: 600; }
+  .med-dose { color: var(--muted); font-size: 11px; }
+
+  .img-section-title { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; margin-top: 16px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .img-section-title:first-child { margin-top: 0; }
+  .img-grid { display: grid; gap: 5px; }
+  .img-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 4px; border: 1px solid var(--border); background: #fafbfc; flex-wrap: wrap; }
+  .img-date { font-family: var(--mono); font-size: 10px; color: var(--muted); width: 75px; flex-shrink: 0; }
+  .img-type-badge { font-family: var(--mono); font-size: 9px; padding: 1px 5px; border-radius: 2px; background: #e4e9ef; color: var(--slate); font-weight: 600; flex-shrink: 0; width: 28px; text-align: center; }
+  .img-type-badge.mri { background: #ddeaf9; color: #1a5fb4; }
+  .img-type-badge.ct { background: #e8d8f5; color: #6b3da6; }
+  .img-desc { font-size: 12px; color: var(--navy); flex: 1; min-width: 120px; }
+  .img-links { display: flex; gap: 5px; margin-left: auto; flex-shrink: 0; }
+  .btn-sm { display: inline-flex; align-items: center; gap: 3px; font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 3px; text-decoration: none; font-weight: 600; border: 1px solid; }
+  .btn-pdf { color: #c0392b; border-color: #e8c0bd; background: var(--red-light); }
+  .btn-pdf:hover { background: #f5d5d2; }
+  .btn-zip { color: #1a5fb4; border-color: #c0d4f0; background: #f0f5fd; }
+  .btn-zip:hover { background: #d8e8fc; }
+
+  .hosp-list { display: grid; gap: 8px; }
+  .hosp-item { display: grid; grid-template-columns: 80px 1fr; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 5px; background: #fafbfc; }
+  .hosp-item.active { border-color: #e8d4a0; background: var(--amber-light); }
+  .hosp-date { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .hosp-body strong { display: block; font-size: 12.5px; font-weight: 600; }
+  .hosp-body span { font-size: 11px; color: var(--slate); }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .contact-item { border: 1px solid var(--border); border-radius: 5px; padding: 10px 12px; background: #fafbfc; }
+  .contact-item .c-label { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
+  .contact-item .c-name { font-size: 13px; font-weight: 600; }
+  .contact-item .c-rel { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  .contact-item .c-phone { font-family: var(--mono); font-size: 12px; color: #1a5fb4; }
+
+  .provider-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .provider-item { border: 1px solid var(--border); border-radius: 5px; padding: 10px 12px; background: #fafbfc; }
+  .provider-item .p-role { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
+  .provider-item .p-name { font-size: 13px; font-weight: 600; }
+  .provider-item .p-dept { font-size: 11px; color: var(--slate); }
+
+  .footer { max-width: 960px; margin: 0 auto; padding: 16px 24px 32px; font-family: var(--mono); font-size: 10px; color: var(--muted); border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media print {
+    body { background: white; font-size: 11px; color: #000; }
+    .header { background: #0d1b2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .urgent-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    /* Convert colored boxes to bordered boxes for print */
+    .alert { background: white !important; color: #000 !important; border: 2px solid #A32D2D !important; }
+    .alert.green-alert { border-color: #1a7a4a !important; }
+    .alert-text strong { color: #000 !important; }
+    .alert-text span { color: #000 !important; opacity: 1 !important; }
+    /* Snapshot tiles */
+    .snapshot-item { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .snapshot-item.red { background: #fff0ef !important; }
+    .snapshot-item.amber { background: #fffbf0 !important; }
+    .snapshot-item.green { background: #f0f9f4 !important; }
+    /* Bar chart */
+    .bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    /* Cards */
+    .card { break-inside: avoid; border: 1px solid #ccc !important; }
+    .card-header { background: #f0f2f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    /* Links — show URL for print */
+    a { color: #1a5fb4 !important; text-decoration: underline; }
+    .doc-link { border: 1px solid #ccc !important; background: white !important; }
+    .btn-pdf { background: white !important; border: 1px solid #A32D2D !important; color: #A32D2D !important; }
+    /* Med badges */
+    .med-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    /* Remove background patterns */
+    .header::before { display: none; }
+    /* Margins */
+    @page { margin: 1.8cm 1.5cm; }
+    /* Section breaks */
+    .card + .card { margin-top: 12px; }
+    h2, h3 { break-after: avoid; }
+    /* Family observations — subtle separator */
+    [style*="border:1px solid var(--border);border-radius:6px;padding:14px"] { border: 1px solid #ccc !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div>
+      <div class="urgent-badge">CNS Tumor Board Priority · Discharged 05/28/2026 · Seeking MD Anderson Evaluation</div>
+      <h1>Karen Clayborne — Clinical Decision Summary</h1>
+      <div class="header-sub">Stage IV Lung Adenocarcinoma · EGFR Exon 19 del · Active CNS Metastasis · Updated 05/28/2026 · Prepared for Physician / Tumor Board Review</div>
+    </div>
+    <div class="patient-box">
+      <div class="row">
+        <div class="label">Patient</div>
+        <div class="value">Karen Clayborne</div>
+      </div>
+      <div class="row">
+        <div class="label">DOB / Age</div>
+        <div class="value">01/11/1966 · Age 60</div>
+      </div>
+      <div class="row">
+        <div class="label">MRN (UH / Stone Oak)</div>
+        <div class="value">71441088 · K193535</div>
+      </div>
+      <div class="row">
+        <div class="label">Current Address</div>
+        <div class="value">19535 Crystal Oak<br>San Antonio TX 78258</div>
+      </div>
+      <div class="row">
+        <div class="label">Discharged</div>
+        <div class="value">05/28/2026 · Home</div>
+      </div>
+      <div class="row">
+        <div class="label">Last Admission</div>
+        <div class="value" style="font-size:11px;font-weight:400">Methodist Stone Oak 05/23–05/28/2026<br>Acct K509976683</div>
+      </div>
+      <div class="row">
+        <div class="label">Current Therapy</div>
+        <div class="value">Tagrisso (osimertinib) 80 mg<br><span style="font-size:11px;font-weight:400">Since May 2025</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- CLINICAL STATUS SUMMARY -->
+  <div style="background:white;border:2px solid #A32D2D;border-radius:4px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;background:#A32D2D;padding:8px 16px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:white;font-weight:500">Urgent — Tumor Board Priority</span>
+    </div>
+    <div style="padding:12px 16px 4px;border-bottom:1px solid #F7C1C1">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+        <span style="display:inline-block;width:3px;min-width:3px;height:16px;background:#A32D2D;border-radius:2px"></span>
+        <span style="font-size:14px;font-weight:600;color:#0d1b2a">Discharged 05/28/2026 · Active CNS metastasis · Seeking urgent MD Anderson tumor board evaluation</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;font-size:12.5px">
+      <div style="padding:12px 16px;border-right:1px solid #F7C1C1;border-bottom:1px solid #F7C1C1">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px">Admission Summary</div>
+        Admitted Methodist Stone Oak 05/23/2026 with acute-on-chronic <strong>dysarthria, dysphagia, left-sided weakness, and ataxia.</strong> BP 223/128 on arrival (hypertensive urgency). HbA1c 9.8%. Dexamethasone 4 mg q6h. Neurosurgery and Oncology consulted. Discharged 05/28/2026 with outpatient radiation recommended.
+      </div>
+      <div style="padding:12px 16px;border-bottom:1px solid #F7C1C1">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px">Key Imaging — This Admission</div>
+        <strong>MRI Brain 05/24:</strong> <strong style="color:#A32D2D;font-weight:700">Vermis 3.0 × 2.4 cm + left cerebellar 1.6 × 2.1 cm + multiple bilateral subcentimeter mets. 4th ventricle effacement. Brainstem compression confirmed.</strong><br>
+        <strong style="color:var(--green)">MRI Spine 05/25: NO metastatic disease.</strong> T9/L3 chronic/treated only.<br>
+        <strong style="color:var(--green)">CT CAP 05/25: NO active systemic metastasis.</strong> CNS-dominant disease.
+      </div>
+      <div style="padding:12px 16px;border-right:1px solid #F7C1C1">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px">Current Status</div>
+        Home · 19535 Crystal Oak, San Antonio TX 78258<br>
+        On dexamethasone 4 mg q8h (discharge dose)<br>
+        Tagrisso 80 mg daily — CNS progressing despite therapy<br>
+        Apixaban (Eliquis) — held at discharge, restart pending physician order<br>
+        24/7 supervision required per discharge orders
+      </div>
+      <div style="padding:12px 16px">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:5px">Treatment History — CNS</div>
+        SRS Course 1: Apr–May 2025 · 30 Gy / 5 fx · Vermis (initial best response 1.0 cm)<br>
+        SRS Course 2: Feb 4–6, 2026 · 27 Gy / 3 fx · L frontal only · Dominant vermis NOT treated<br>
+        Neurosurgery (05/24/2026): Surgical resection excluded — see leptomeningeal finding below
+      </div>
+    </div>
+  </div>
+
+  <!-- LEPTOMENINGEAL FINDING BOX -->
+  <div style="background:white;border:2px solid #791F1F;border-radius:4px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;background:#791F1F;padding:8px 16px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:white;font-weight:500">New Finding — Not in Radiologist Report</span>
+    </div>
+    <div style="padding:12px 16px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="display:inline-block;width:3px;min-width:3px;height:16px;background:#791F1F;border-radius:2px"></span>
+        <span style="font-size:13px;font-weight:600;color:#0d1b2a"><span style="font-family:var(--mono);font-size:10px;background:#FCEBEB;color:#791F1F;border:0.5px solid #F7C1C1;border-radius:999px;padding:2px 8px;margin-right:8px">05/25/2026</span>Leptomeningeal disease identified — Dr. Jason Boulter MD, Neurosurgery</span>
+      </div>
+      <p style="font-size:13px;color:#0d1b2a;line-height:1.65">Independent review of the May 24, 2026 MRI Brain demonstrated <strong>enhancement extending in a spiculated pattern along the cerebellar folia from the dominant vermis lesion — consistent with leptomeningeal disease.</strong> This finding is not documented in the radiologist's written impression (Dr. David Wood, signed 05/24/2026). It was the primary basis for Dr. Boulter's exclusion of surgical candidacy — resection was determined to offer <strong>little to no meaningful survival benefit</strong> given leptomeningeal extension. <strong>Dedicated leptomeningeal workup (LP/CSF cytology) has not been performed</strong> and should be considered in treatment planning.</p>
+    </div>
+  </div>
+
+  <!-- SNAPSHOT -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">TB</span><h2>Tumor Board Snapshot — Updated 05/28/2026</h2></div>
+    <div class="card-body">
+      <div class="snapshot-grid">
+        <div class="snapshot-item red">
+          <div class="s-label">Active Lesion (Last Measured)</div>
+          <div class="s-value">2.6 cm*</div>
+          <div class="s-note">*Last formally measured Apr 10, 2026 · May 24 ER MRI confirmed further growth but did not re-measure · Current size unknown pending repeat MRI</div>
+        </div>
+        <div class="snapshot-item red">
+          <div class="s-label">Trajectory</div>
+          <div class="s-value">↑ Progressing</div>
+          <div class="s-note">1.0 → 1.4 → 1.9 → 2.4 cm + acute neuro decline</div>
+        </div>
+        <div class="snapshot-item red" style="background:#f9edf9;border-color:#c060d0">
+          <div class="s-label" style="color:#7b2d8b">Leptomeningeal Disease</div>
+          <div class="s-value" style="color:#7b2d8b">Confirmed ⚠</div>
+          <div class="s-note">Spiculated enhancement along cerebellar folia — Dr. Boulter NSGY 05/25/2026 · Excluded surgical candidacy</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Steroids (Discharge)</div>
+          <div class="s-value">4 mg q8h</div>
+          <div class="s-note">Dexamethasone PO · Discharged 05/28/2026 · Taper per oncology</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Discharged</div>
+          <div class="s-value">05/28/2026</div>
+          <div class="s-note">Methodist Stone Oak · Home · 19535 Crystal Oak SA TX 78258</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Spine Mets</div>
+          <div class="s-value" style="color:var(--green)">CLEAR ✓</div>
+          <div class="s-note">MRI 05/25: No metastatic disease — T9/L3 chronic only</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Systemic Disease</div>
+          <div class="s-value" style="color:var(--green)">CLEAR ✓</div>
+          <div class="s-note">CT CAP 05/25: No active metastasis — right lung treated</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Primary Mutation</div>
+          <div class="s-value">EGFR Exon 19 del</div>
+          <div class="s-note">TEMPUS 2024-10-18</div>
+        </div>
+        <div class="snapshot-item amber">
+          <div class="s-label">Co-Mutation</div>
+          <div class="s-value">BRCA2 pathogenic</div>
+          <div class="s-note">Variant confirmed</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Systemic Therapy</div>
+          <div class="s-value">Tagrisso 80 mg</div>
+          <div class="s-note">Osimertinib daily — CNS still progressing</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Outpatient Oncology</div>
+          <div class="s-value">Dr. Kelly, Mays</div>
+          <div class="s-note">Medical Oncology · (210) 450-1000 · First follow-up pending</div>
+        </div>
+        <div class="snapshot-item">
+          <div class="s-label">Next Step</div>
+          <div class="s-value">MD Anderson TB</div>
+          <div class="s-note">Tumor Board referral pending · Outpatient radiation recommended</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURRENT LABS -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">Lab</span><h2>Current Laboratory Results — 05/25/2026</h2></div>
+    <div class="card-body">
+      <div class="labs-grid">
+        <div class="lab-group">
+          <h4>Chemistry (05/25 0658)</h4>
+          <div class="lab-row"><span class="lab-name">Sodium</span><span><span class="lab-val">136</span><span class="lab-ref">136–145 mmol/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">Potassium</span><span><span class="lab-val">3.8</span><span class="lab-ref">3.5–5.1 mmol/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">Creatinine</span><span><span class="lab-val">1.07</span><span class="lab-ref">0.79–1.58 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">eGFR</span><span><span class="lab-val lo">59 ↓</span><span class="lab-ref">&gt;60</span></span></div>
+          <div class="lab-row"><span class="lab-name">Glucose (serum)</span><span><span class="lab-val hi">187 ↑</span><span class="lab-ref">74–106 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">POC Glucose range (admission)</span><span><span class="lab-val hi">140–318 ↑</span><span class="lab-ref">70–99 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Calcium</span><span><span class="lab-val">9.6</span><span class="lab-ref">8.5–10.1 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Albumin</span><span><span class="lab-val">3.5</span><span class="lab-ref">3.4–5.0 g/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">AST / ALT</span><span><span class="lab-val">20 / 16</span><span class="lab-ref">WNL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Total Bilirubin</span><span><span class="lab-val">0.7</span><span class="lab-ref">0.2–1.1 mg/dL</span></span></div>
+          <h4 style="margin-top:14px">Glycemic / Lipids (05/24)</h4>
+          <div class="lab-row"><span class="lab-name"><strong>HbA1c</strong></span><span><span class="lab-val hi" style="font-size:13px">9.8% ↑↑</span><span class="lab-ref">Normal &lt;5.7%</span></span></div>
+          <div class="lab-row"><span class="lab-name">Est. avg glucose</span><span><span class="lab-val hi">235 mg/dL</span><span class="lab-ref">57–120 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Total Cholesterol</span><span><span class="lab-val">190</span><span class="lab-ref">&lt;200 Desirable</span></span></div>
+          <div class="lab-row"><span class="lab-name">HDL</span><span><span class="lab-val">77</span><span class="lab-ref">&gt;60 Low risk</span></span></div>
+          <div class="lab-row"><span class="lab-name">LDL (calculated)</span><span><span class="lab-val">99</span><span class="lab-ref">&lt;100 goal (high risk)</span></span></div>
+          <div class="lab-row"><span class="lab-name">Triglycerides</span><span><span class="lab-val">68</span><span class="lab-ref">&lt;150 Normal</span></span></div>
+          <div class="lab-row"><span class="lab-name">Chol/HDL Ratio</span><span><span class="lab-val">2.5</span><span class="lab-ref">Very low risk</span></span></div>
+        </div>
+        <div class="lab-group">
+          <h4>Hematology (05/25 0658)</h4>
+          <div class="lab-row"><span class="lab-name">WBC</span><span><span class="lab-val">7.2</span><span class="lab-ref">4.5–10.5 K/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Hgb</span><span><span class="lab-val">14.0</span><span class="lab-ref">12.0–16.0 g/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Hct</span><span><span class="lab-val">42.6</span><span class="lab-ref">36.0–46.0 %</span></span></div>
+          <div class="lab-row"><span class="lab-name">Platelets</span><span><span class="lab-val">169</span><span class="lab-ref">150–400 K/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Troponin I (hsTn)</span><span><span class="lab-val">&lt;2 ng/L</span><span class="lab-ref">Normal ≤33</span></span></div>
+          <div class="lab-row"><span class="lab-name">BNP</span><span><span class="lab-val">6 pg/mL</span><span class="lab-ref">Normal &lt;100</span></span></div>
+          <h4 style="margin-top:14px">Vitals — Outpatient Baseline (02/17/2026 · Texas Oncology / Dr. Alluri)</h4>
+          <div class="lab-row"><span class="lab-name">BP</span><span><span class="lab-val">145/86</span><span class="lab-ref">mmHg</span></span></div>
+          <div class="lab-row"><span class="lab-name">HR</span><span><span class="lab-val">68</span><span class="lab-ref">bpm</span></span></div>
+          <div class="lab-row"><span class="lab-name">SpO₂</span><span><span class="lab-val">96%</span><span class="lab-ref">Room air</span></span></div>
+          <div class="lab-row"><span class="lab-name">Temp</span><span><span class="lab-val">97.8°F</span><span class="lab-ref">36.6°C</span></span></div>
+          <div class="lab-row"><span class="lab-name">Weight</span><span><span class="lab-val">207.4 lb</span><span class="lab-ref">94.1 kg · BMI 37.93</span></span></div>
+          <div class="lab-row"><span class="lab-name">Height</span><span><span class="lab-val">62 in</span><span class="lab-ref">5'2" · BSA 1.94 m²</span></span></div>
+          <h4 style="margin-top:14px">Vitals — Inpatient (05/23–05/25/2026 · Methodist Stone Oak)</h4>
+          <div class="lab-row"><span class="lab-name">BP (admission peak)</span><span><span class="lab-val hi">223/128 ↑↑</span><span class="lab-ref">Hypertensive urgency</span></span></div>
+          <div class="lab-row"><span class="lab-name">BP (latest 05/25)</span><span><span class="lab-val">146/92</span><span class="lab-ref">mmHg</span></span></div>
+          <div class="lab-row"><span class="lab-name">Pulse (latest)</span><span><span class="lab-val">83–104</span><span class="lab-ref">bpm range</span></span></div>
+          <div class="lab-row"><span class="lab-name">SpO₂</span><span><span class="lab-val">94–98%</span><span class="lab-ref">Room air</span></span></div>
+          <div class="lab-row"><span class="lab-name">Temp</span><span><span class="lab-val">36.7–37.4°C</span><span class="lab-ref">Afebrile</span></span></div>
+          <div class="lab-row"><span class="lab-name">Weight</span><span><span class="lab-val">94.8 kg</span><span class="lab-ref">208 lb · Ht 5'2" (62 in)</span></span></div>
+          <h4 style="margin-top:14px">Urinalysis (05/23 → 05/25)</h4>
+          <div class="lab-row"><span class="lab-name">Leukocyte esterase</span><span><span class="lab-val hi">Moderate ↑</span><span class="lab-ref">Negative expected</span></span></div>
+          <div class="lab-row"><span class="lab-name">WBC in urine</span><span><span class="lab-val hi">15–29/HPF ↑</span><span class="lab-ref">0–5/HPF</span></span></div>
+          <div class="lab-row"><span class="lab-name">Urine culture (05/25)</span><span><span class="lab-val" style="color:var(--muted)">Mixed flora ×3</span><span class="lab-ref">Likely contamination — recollect</span></span></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:var(--red-light);border:1px solid #e8c0bd;border-radius:5px;font-size:12px;margin-bottom:8px;">
+        <strong style="color:var(--red)">⚠ Critical:</strong> <strong>HbA1c 9.8%</strong> (est. avg glucose 235 mg/dL) — severely uncontrolled DM. POC glucose ranged 140–318 across admission. Atorvastatin 40 mg newly added. Admission BP <strong>223/128</strong> (hypertensive urgency) — received labetalol, carvedilol, nifedipine, amlodipine in ER; came down to 187/91 at departure.
+      </div>
+      <div style="padding:10px;background:#f5f5f0;border:1px solid #ddd;border-radius:5px;font-size:12px;">
+        <strong style="color:var(--muted)">ℹ Urine culture (05/25):</strong> &gt;100,000 CFU/ml mixed gram-positive and gram-negative flora — 3+ organisms consistent with <em>contamination</em>. Recollect recommended. No confirmed UTI at this time.
+      </div>
+    </div>
+  </div>
+
+  <!-- JAN 14 2026 LABS -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">Lab</span><h2>Laboratory Results — January 14, 2026 · Pre-Hospitalization Baseline</h2></div>
+    <div class="card-body">
+      <div style="margin-bottom:12px;padding:8px 12px;background:#f0f5fd;border:1px solid #c0d4f0;border-radius:5px;font-size:12px;">
+        <strong style="color:#1a5fb4">Context:</strong> Collected Jan 14, 2026 at 3:18 PM · Ordered by Dr. William Kelly, MD · Multispecialty Research Hospital Laboratory · MRN 60937438. These are the labs drawn ~8 days before the Jan 22 University Hospital admission for ataxia/elevated BP, providing the pre-admission baseline for that hospitalization.
+      </div>
+      <div class="labs-grid">
+        <div class="lab-group">
+          <h4>CMP — Chemistry (Jan 14, 2026)</h4>
+          <div class="lab-row"><span class="lab-name">Sodium</span><span><span class="lab-val">141</span><span class="lab-ref">136–145 mmol/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">Potassium</span><span><span class="lab-val">4.1</span><span class="lab-ref">3.5–5.1 mmol/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">Chloride</span><span><span class="lab-val">107</span><span class="lab-ref">101–110 mmol/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">CO₂</span><span><span class="lab-val">26</span><span class="lab-ref">20–28 mmol/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">BUN</span><span><span class="lab-val">15</span><span class="lab-ref">9.8–20.1 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Creatinine</span><span><span class="lab-val">0.96</span><span class="lab-ref">0.57–1.11 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">BUN/Cr Ratio</span><span><span class="lab-val">16</span><span class="lab-ref">WNL</span></span></div>
+          <div class="lab-row"><span class="lab-name">eGFR</span><span><span class="lab-val" style="color:var(--green)">68 ✓</span><span class="lab-ref">≥60 · G2 Mildly decreased</span></span></div>
+          <div class="lab-row"><span class="lab-name">Glucose</span><span><span class="lab-val">122</span><span class="lab-ref">60–130 mg/dL (lab range)</span></span></div>
+          <div class="lab-row"><span class="lab-name">Calcium</span><span><span class="lab-val">9.6</span><span class="lab-ref">8.4–10.2 mg/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Total Protein</span><span><span class="lab-val">7.8</span><span class="lab-ref">6.4–8.3 g/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Albumin</span><span><span class="lab-val lo">3.2 ↓</span><span class="lab-ref">3.5–5.0 g/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Globulin</span><span><span class="lab-val">4.6</span><span class="lab-ref">g/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Alk Phosphatase</span><span><span class="lab-val">100</span><span class="lab-ref">40–150 U/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">AST</span><span><span class="lab-val">17</span><span class="lab-ref">11–34 U/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">ALT</span><span><span class="lab-val">15</span><span class="lab-ref">&lt;34 U/L</span></span></div>
+          <div class="lab-row"><span class="lab-name">Total Bilirubin</span><span><span class="lab-val">0.3</span><span class="lab-ref">0.2–1.2 mg/dL</span></span></div>
+        </div>
+        <div class="lab-group">
+          <h4>CBC with Auto Diff (Jan 14, 2026)</h4>
+          <div class="lab-row"><span class="lab-name">WBC</span><span><span class="lab-val">9.24</span><span class="lab-ref">3.98–10.04 K/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">RBC</span><span><span class="lab-val">4.67</span><span class="lab-ref">3.93–5.22 M/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Hgb</span><span><span class="lab-val">13.5</span><span class="lab-ref">11.2–15.7 g/dL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Hct</span><span><span class="lab-val">42.1</span><span class="lab-ref">34.1–44.9 %</span></span></div>
+          <div class="lab-row"><span class="lab-name">Platelets</span><span><span class="lab-val">209</span><span class="lab-ref">140–410 K/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">RDW</span><span><span class="lab-val hi">15.5 ↑</span><span class="lab-ref">11.7–14.4 %</span></span></div>
+          <div class="lab-row"><span class="lab-name">MCV / MCH / MCHC</span><span><span class="lab-val">90.1 / 28.9 / 32.1</span><span class="lab-ref">WNL</span></span></div>
+          <h4 style="margin-top:12px">Differential — ⚠ Steroid Effect Pattern</h4>
+          <div class="lab-row"><span class="lab-name">Neutrophils %</span><span><span class="lab-val hi">83.8% ↑</span><span class="lab-ref">34.0–71.1%</span></span></div>
+          <div class="lab-row"><span class="lab-name">Neutrophils # (ANC)</span><span><span class="lab-val hi">7.74 ↑</span><span class="lab-ref">1.50–6.60 K/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Lymphocytes %</span><span><span class="lab-val lo">7.6% ↓</span><span class="lab-ref">19.3–51.7%</span></span></div>
+          <div class="lab-row"><span class="lab-name">Lymphocytes #</span><span><span class="lab-val lo">0.70 ↓</span><span class="lab-ref">1.18–3.74 K/uL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Monocytes %/#</span><span><span class="lab-val">7.7% / 0.71</span><span class="lab-ref">WNL</span></span></div>
+          <div class="lab-row"><span class="lab-name">Eosinophils %/#</span><span><span class="lab-val">0.3% / 0.03</span><span class="lab-ref">WNL</span></span></div>
+          <div class="lab-row"><span class="lab-name">IG % / #</span><span><span class="lab-val">0.4% / 0.04</span><span class="lab-ref">Immature granulocytes</span></span></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:var(--amber-light);border:1px solid #e8d4a0;border-radius:5px;font-size:12px;">
+        <strong style="color:var(--amber)">⚠ Clinical note — Jan 14, 2026 labs:</strong> Neutrophilia (83.8%, ANC 7.74) with relative lymphopenia (7.6%, abs 0.70) is a classic steroid-effect pattern from dexamethasone use — not indicative of infection. Albumin 3.2 g/dL (low, down from prior values) suggests mild nutritional/inflammatory depletion. eGFR was 68 at this point; by the May 2026 admission it had declined to 59, showing a trend toward worsening renal function over 4 months. RDW mildly elevated (15.5%) — may reflect mixed nutritional deficiency.
+      </div>
+    </div>
+  </div>
+
+  <!-- LESION PROGRESSION CHART -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">↗</span><h2>Cerebellar Vermis Lesion — Size Progression</h2></div>
+    <div class="card-body">
+      <div style="margin-bottom:14px;font-size:12px;color:var(--muted)">The bar shows the <strong>dominant (vermis) lesion only</strong>. Other lesions that appeared over time are listed in the note beneath each bar. Bar width is proportional to the largest dimension vs. peak of 3.1 cm.</div>
+      <div class="lesion-chart">
+        <div class="chart-rows">
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Apr 2025</div>
+              <div class="bar-wrap"><div class="bar b1" style="width:100%"><span class="bar-label">3.1 × 2.4 × 3.0 cm</span></div></div>
+              <div class="chart-size">3.1 cm</div>
+            </div>
+            <div class="chart-event">Dominant lesion: <strong>3.1 cm</strong> · Other lesions: none yet · 4th ventricle effacement · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/RADRPT-04-02-2025.pdf" target="_blank">MRI Report ↗</a></div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Apr–May 2025</div>
+              <div class="bar-wrap" style="background:#e8f3ed"><div style="height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:10px;color:var(--green)">▶ SRS Course 1 — 30 Gy / 5 fractions to vermis (only lesion at the time)</div></div>
+              <div class="chart-size" style="color:var(--muted)">Tx</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Jun 2025</div>
+              <div class="bar-wrap"><div class="bar b2" style="width:32%"><span class="bar-label">1.0 × 0.6 × 1.0 cm</span></div></div>
+              <div class="chart-size" style="color:var(--green)">1.0 cm ✓</div>
+            </div>
+            <div class="chart-event" style="color:var(--green)">Dominant lesion: <strong>1.0 cm</strong> ✓ Best response post-SRS · Other lesions: none · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-6-12-2025.pdf" target="_blank">MRI Report ↗</a></div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Aug 2025</div>
+              <div class="bar-wrap"><div class="bar b3" style="width:45%"><span class="bar-label">1.4 cm enhancing</span></div></div>
+              <div class="chart-size" style="color:var(--amber)">1.4 cm ↑</div>
+            </div>
+            <div class="chart-event" style="color:var(--amber)">Dominant lesion: <strong>1.4 cm</strong> ↑ (+40% from best) · Other lesions: none · Enhancing · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging.pdf" target="_blank">MRI Report ↗</a></div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Nov 2025</div>
+              <div class="bar-wrap"><div class="bar b4" style="width:61%"><span class="bar-label">1.9 × 1.7 cm</span></div></div>
+              <div class="chart-size" style="color:#c07000">1.9 cm ↑</div>
+            </div>
+            <div class="chart-event" style="color:#c07000">Dominant lesion: <strong>1.9 cm</strong> ↑ · Other lesions: <strong>1 new</strong> — R frontal 0.7 × 0.8 cm (see laterality note*) · Total lesions: <strong>2</strong> · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging-1.pdf" target="_blank">MRI Report ↗</a></div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Feb 4–6, 2026</div>
+              <div class="bar-wrap" style="background:#fff3e8"><div style="height:100%;display:flex;align-items:center;padding-left:8px;font-family:var(--mono);font-size:10px;color:var(--amber)">▶ SRS Course 2 — 27 Gy / 3 fractions to left frontal lesion ONLY · Dominant vermis lesion was NOT treated (tumor board decision)</div></div>
+              <div class="chart-size" style="color:var(--muted)">Tx</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">Apr 10, 2026</div>
+              <div class="bar-wrap"><div class="bar b4" style="width:84%;background:#b36800"><span class="bar-label">2.2 × 2.6 × 2.2 cm</span></div></div>
+              <div class="chart-size" style="color:#b36800">2.6 cm ↑</div>
+            </div>
+            <div class="chart-event" style="color:#b36800">Dominant lesion: <strong>2.6 cm</strong> ↑ · Other lesions: left lower cerebellar <strong>1.1 cm</strong> (new/growing) · left frontal <strong>↓ 9 mm</strong> (SRS working) · New: 2–3 mm nodules in left lateral cerebellum + bilateral occipital lobes · Total lesions: <strong>4+</strong> · Dr. Manoj Kumar / University Health</div>
+          </div>
+
+          <div>
+            <div class="chart-row">
+              <div class="chart-date">May 24, 2026</div>
+              <div class="bar-wrap"><div class="bar b5" style="width:97%"><span class="bar-label">3.0 × 2.4 cm</span></div></div>
+              <div class="chart-size" style="color:var(--red)">3.0 cm ⚠</div>
+            </div>
+            <div class="chart-event" style="color:var(--red);font-weight:600">Dominant lesion: <strong>3.0 × 2.4 cm</strong> ↑ — near original size · Other lesions: left cerebellar <strong>1.6 × 2.1 cm</strong> + multiple subcentimeter bilateral cerebellar + bilateral frontal/parietal · Total lesions: <strong>6+</strong> · Brainstem compression confirmed · Dr. David Wood MD / Methodist Stone Oak</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Summary table -->
+      <div style="margin-top:20px;overflow-x:auto;">
+        <table style="font-size:12px;">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Dominant Lesion (Vermis)</th>
+              <th>Other Lesions Present</th>
+              <th>Total # Lesions</th>
+              <th>Change from Prior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:var(--mono);white-space:nowrap">Apr 2025</td><td><span class="size-pill">3.1 × 2.4 × 3.0 cm</span></td><td style="color:var(--muted)">None</td><td style="text-align:center;font-weight:600">1</td><td>Initial presentation</td></tr>
+            <tr class=""><td style="font-family:var(--mono);white-space:nowrap">Jun 2025</td><td><span class="size-pill best">1.0 × 0.6 × 1.0 cm ✓</span></td><td style="color:var(--muted)">None</td><td style="text-align:center;font-weight:600">1</td><td style="color:var(--green)">↓ Best response post-SRS</td></tr>
+            <tr><td style="font-family:var(--mono);white-space:nowrap">Aug 2025</td><td><span class="size-pill">1.4 cm</span></td><td style="color:var(--muted)">None</td><td style="text-align:center;font-weight:600">1</td><td style="color:var(--amber)">↑ Regrowth confirmed</td></tr>
+            <tr><td style="font-family:var(--mono);white-space:nowrap">Nov 2025</td><td><span class="size-pill">1.9 × 1.7 cm</span></td><td>R frontal: 0.7 × 0.8 cm (new)*</td><td style="text-align:center;font-weight:600;color:var(--amber)">2</td><td style="color:var(--amber)">↑ + 1 new lesion appeared</td></tr>
+            <tr><td style="font-family:var(--mono);white-space:nowrap;font-style:italic" colspan="5" style="color:var(--muted);background:#fff3e8;padding:6px 12px">Feb 4–6, 2026 — SRS Course 2: Left frontal lesion treated (27 Gy / 3 fx). Dominant vermis NOT treated per tumor board decision.</td></tr>
+            <tr class=""><td style="font-family:var(--mono);white-space:nowrap">Apr 10, 2026</td><td><span class="size-pill">2.2 × 2.6 × 2.2 cm</span></td><td>L cerebellar: 1.1 cm (↑) · L frontal: 9 mm (↓ SRS response) · New: bilateral occipital nodules 2–3 mm</td><td style="text-align:center;font-weight:600;color:var(--red)">4+</td><td style="color:#b36800">↑ Continued growth despite treatment</td></tr>
+            <tr class="row-critical"><td style="font-family:var(--mono);white-space:nowrap;color:var(--red);font-weight:600">May 24, 2026 ⚠</td><td><span class="size-pill current">3.0 × 2.4 cm ⚠</span></td><td>L cerebellar: 1.6 × 2.1 cm · Multiple subcentimeter bilateral cerebellar · Multiple subcentimeter bilateral frontal/parietal</td><td style="text-align:center;font-weight:600;color:var(--red)">6+</td><td style="color:var(--red);font-weight:600">↑ Near original size · Active brainstem compression</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYMPTOMS + ACTIONS -->
+  <div class="two-col">
+
+    <div class="card">
+      <div class="card-header"><span class="icon-text">Sx</span><h2>Current Neurological Symptoms</h2></div>
+      <div class="card-body">
+        <div class="symptom-list">
+          <div class="symptom-row red">
+            <div class="sym-icon">🗣️</div>
+            <div class="sym-text">
+              <strong>Acute Dysarthria (Chief Complaint)</strong>
+              <span>Significantly worsened 2–3 days before admission; patient at CVS when speech became markedly slurred. Per patient: "My speech is getting worse."</span>
+            </div>
+          </div>
+          <div class="symptom-row red">
+            <div class="sym-icon">🎯</div>
+            <div class="sym-text">
+              <strong>Brainstem Compression — Confirmed</strong>
+              <span>CT Head 05/24: posterior fossa metastases with mass effect + mild ventricular dilatation. MRI: vasogenic edema in bilateral cerebellar hemispheres.</span>
+            </div>
+          </div>
+          <div class="symptom-row red">
+            <div class="sym-icon">🚶</div>
+            <div class="sym-text">
+              <strong>Progressive Gait Ataxia</strong>
+              <span>Ongoing — uses walker at baseline; worsened at this presentation</span>
+            </div>
+          </div>
+          <div class="symptom-row red">
+            <div class="sym-icon">😵</div>
+            <div class="sym-text">
+              <strong>Dysphagia + Confusion</strong>
+              <span>Dysphagia present; family notes new confusion. Patient lethargic but arousable at evaluation.</span>
+            </div>
+          </div>
+          <div class="symptom-row">
+            <div class="sym-icon">✋</div>
+            <div class="sym-text">
+              <strong>Left-Sided Weakness</strong>
+              <span>Right UE strength 4/5 on neuro exam (05/24). Left-sided weakness documented by family since January 2026.</span>
+            </div>
+          </div>
+          <div class="symptom-row">
+            <div class="sym-icon">🤕</div>
+            <div class="sym-text">
+              <strong>Frontal Headache</strong>
+              <span>Patient endorses frontal headache — consistent with increased ICP</span>
+            </div>
+          </div>
+          <div class="symptom-row">
+            <div class="sym-icon">💊</div>
+            <div class="sym-text">
+              <strong>Steroid-Dependent (Inpatient)</strong>
+              <span>Dexamethasone 4 mg q6h — modest improvement in symptoms noted</span>
+            </div>
+          </div>
+          <div class="symptom-row green">
+            <div class="sym-icon">✅</div>
+            <div class="sym-text">
+              <strong>No Foraminal Herniation</strong>
+              <span>MRI 05/24 confirmed: no foraminal herniation despite significant mass effect</span>
+            </div>
+          </div>
+          <div class="symptom-row" style="background:#f9edf9;border-left:3px solid #c060d0">
+            <div class="sym-icon">🔬</div>
+            <div class="sym-text">
+              <strong style="color:#7b2d8b">Leptomeningeal Disease — Confirmed 05/25/2026</strong>
+              <span>Dr. Jason Boulter MD (Neurosurgery) identified enhancement extending in a spiculated pattern along the cerebellar folia from the large vermian lesion on independent review of the 05/24 MRI — consistent with leptomeningeal disease. This finding is not included in Dr. Wood's written radiology impression. It was the primary basis for Dr. Boulter's recommendation against surgical resection. Dedicated leptomeningeal workup (LP/cytology) has not been performed.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="icon-text">Rx</span><h2>Clinical Plan — Discharge Outcomes (05/28/2026)</h2></div>
+      <div class="card-body">
+        <div class="action-list">
+          <div class="action-row">
+            <div class="action-num">✓</div>
+            <div class="action-body">
+              <strong>Surgical Resection — Excluded · Dr. Jason Boulter MD, Neurosurgery (05/24–05/25)</strong>
+              <span>On independent review of MRI Brain (05/24), Dr. Boulter identified <strong style="color:#7b2d8b">leptomeningeal enhancement extending in a spiculated pattern along the cerebellar folia — consistent with leptomeningeal disease.</strong> This finding directly excluded surgical candidacy. Dr. Boulter determined resection would offer <strong>little to no meaningful survival benefit</strong> given leptomeningeal extension and recommended proceeding with radiation or chemotherapy instead. Note: this finding is not documented in the radiologist's written impression (Dr. Wood).</span>
+            </div>
+          </div>
+          <div class="action-row">
+            <div class="action-num">✓</div>
+            <div class="action-body">
+              <strong>Discharge Plan — 05/28/2026</strong>
+              <span>Discharged home with home health services. Walker in use. 24/7 supervision required. PT/OT/SLP follow-up recommended. Outpatient radiation recommended per Dr. John Ogden MD (Oncology consult 05/25). No systemic therapy change recommended at this time (poor CNS penetration). Close follow-up at Mays Cancer Center.</span>
+            </div>
+          </div>
+          <div class="action-row">
+            <div class="action-num">⚠</div>
+            <div class="action-body">
+              <strong>Apixaban (Eliquis) — Held at Discharge · Restart Decision Pending</strong>
+              <span>Eliquis held inpatient per NSGY evaluation. Not included on discharge medication list. Patient has documented bilateral PE history — requires long-term anticoagulation. <strong>Restart timeline must be addressed by outpatient oncology or hematology at first follow-up.</strong></span>
+            </div>
+          </div>
+          <div class="action-row">
+            <div class="action-num">01</div>
+            <div class="action-body">
+              <strong>MD Anderson Tumor Board — Pending</strong>
+              <span>CNS-dominant disease post-SRS × 2 on Tagrisso with confirmed leptomeningeal spread. Requires multidisciplinary subspecialty decision. This referral is the primary pending action item.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CURRENT MEDICATIONS -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">Meds</span><h2>Discharge Medications — Methodist Stone Oak · Finalized 05/28/2026</h2></div>
+    <div class="card-body">
+      <div style="margin-bottom:10px;padding:7px 12px;background:#f0f5fd;border:1px solid #c0d4f0;border-radius:5px;font-size:12px;">
+        <strong style="color:#1a5fb4">Source:</strong> Official Discharge — Patient Medication List · Methodist Hospital Stone Oak · Acct K509976683 · MR# K00395352 · Prescribing MD: Dumovich, Jenna DO · Preferred pharmacy: CVS #3894, 120 E Sonterra Blvd, (210) 404-9006
+      </div>
+      <div class="med-list">
+        <div class="med-row">
+          <span class="med-badge cv">CV</span>
+          <div>
+            <div class="med-name">Aspirin (St. Joseph Aspirin) 81 mg</div>
+            <div class="med-dose">PO DAILY · #30 tab · CVS #3894</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge cv">CV</span>
+          <div>
+            <div class="med-name">Atorvastatin (Lipitor) 40 mg</div>
+            <div class="med-dose">PO AT BEDTIME · #30 tab · CVS #3894 · Added this admission (05/24/2026)</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge dm">DM</span>
+          <div>
+            <div class="med-name">Blood Sugar Diagnostic (Blood Glucose Test Strip)</div>
+            <div class="med-dose">MISCELLANEOUS · AS DIRECTED · #100 each · CVS #3894</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge dm">DM</span>
+          <div>
+            <div class="med-name">Blood-Glucose Meter (Accu-Chek Guide Monitor System)</div>
+            <div class="med-dose">MISCELLANEOUS · AS DIRECTED · #1 each · CVS #3894</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge cv">CV</span>
+          <div>
+            <div class="med-name">Carvedilol (Coreg) 1 tab</div>
+            <div class="med-dose">PO TWICE A DAY · Indication: BP</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge neuro">NEURO</span>
+          <div>
+            <div class="med-name">Dexamethasone (Decadron) 4 mg</div>
+            <div class="med-dose">PO EVERY 8 HOURS · #90 tab · CVS #3894 · Steroid taper to be directed by oncology team</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge dm">DM</span>
+          <div>
+            <div class="med-name">Insulin Glargine-YFGN (Semglee YFGN Pen) 15 units</div>
+            <div class="med-dose">SUBCUTANEOUS TWICE A DAY · #30 mL · CVS #3894 · Steroid-induced DM management</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge cv">CV</span>
+          <div>
+            <div class="med-name">Nifedipine ER (Adalat) 30 mg</div>
+            <div class="med-dose">PO TWICE A DAY · Indication: blood pressure</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge onc">ONC</span>
+          <div>
+            <div class="med-name">Osimertinib Mesylate (Tagrisso) 80 mg</div>
+            <div class="med-dose">PO DAILY · Indication: lung cancer · EGFR Exon 19 del NSCLC · Since May 2025</div>
+          </div>
+        </div>
+        <div class="med-row">
+          <span class="med-badge dm">DM</span>
+          <div>
+            <div class="med-name">Insulin Syringe &amp; Needle 0.3 mL 31G × 5/16</div>
+            <div class="med-dose">MISCELLANEOUS · TWICE A DAY · #100 each · CVS #3894 · For use with insulin glargine</div>
+          </div>
+        </div>
+        <div class="med-row" style="border-color:#e8c0bd;background:var(--red-light)">
+          <span class="med-badge anticoag" style="background:#c0392b;color:white">⚠ URGENT</span>
+          <div>
+            <div class="med-name">Apixaban (Eliquis) — NOT on discharge list · Restart decision pending</div>
+            <div class="med-dose"><strong style="color:var(--red)">Eliquis was held inpatient per Dr. Boulter (NSGY) and was NOT included on the 05/28/2026 discharge medication list.</strong> Patient has documented bilateral PE history and requires long-term anticoagulation. No restart order or timeline documented at discharge. <strong>This must be addressed by outpatient oncology or hematology at first follow-up — leaving a bilateral PE patient off anticoagulation without a clear plan is a significant thrombotic risk.</strong> Contact Dr. Kelly (Mays, 210-450-1000) or Dr. Boulter for guidance.</div>
+          </div>
+        </div>
+        <div class="med-row" style="border-color:#e8d4a0;background:var(--amber-light)">
+          <span class="med-badge dm" style="background:#e8d4a0;color:#8b5000">NOTE</span>
+          <div>
+            <div class="med-name">Glipizide — NOT on discharge list · Replaced by insulin</div>
+            <div class="med-dose">Glipizide 2.5 mg BID was on the admission medication list but was <strong>replaced at discharge</strong> with Insulin Glargine-YFGN (Semglee) 15 units twice daily. This is appropriate given glucose levels of 140–318 during admission on steroids. Do not restart Glipizide without oncology/endocrine guidance — steroid-induced DM requires insulin management while on dexamethasone.</div>
+          </div>
+        </div>
+        <div class="med-row" style="opacity:.55">
+          <span class="med-badge cv" style="background:#eee;color:#999">DC</span>
+          <div>
+            <div class="med-name">Other medications not on discharge list</div>
+            <div class="med-dose">Hydralazine · Losartan · Amlodipine · Metformin · Amoxicillin-clavulanate · Lazertinib — not listed on 05/28/2026 discharge medication list. Confirm with outpatient team whether any should be restarted.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL CNS TIMELINE TABLE -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">TL</span><h2>Full CNS Disease Timeline — Source Documents</h2></div>
+    <div class="card-body" style="padding:0; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Event / Finding</th>
+            <th>Lesion / Detail</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Oct 2024</td>
+            <td>Diagnosed RLL lung cancer with brain and spine metastases</td>
+            <td>EGFR Exon 19 del — TEMPUS DNA</td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/10-29-2024-TEMPUS%20DNA%20REPORT.pdf" target="_blank">📄 TEMPUS Report</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Feb–Mar 2025</td>
+            <td>Initial hospital discovery of cerebellar lesion</td>
+            <td><span class="size-pill">~3.1 cm</span></td>
+            <td><span style="font-size:11px;color:var(--muted)">Hospital imaging — not yet uploaded</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Apr 2, 2025</td>
+            <td>MRI Brain — large vermian mass confirmed</td>
+            <td><span class="size-pill">3.1 × 2.4 × 3.0 cm</span><br><span style="font-size:11px;color:var(--muted)">4th ventricle effacement</span></td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/RADRPT-04-02-2025.pdf" target="_blank">📄 Radiology Report</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Apr 3, 2025</td>
+            <td>MRI Abdomen — spinal metastases</td>
+            <td>T3, T9, L3 lesions; pleural effusion</td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/RADRPT-04-03-2025.pdf" target="_blank">📄 Radiology Report</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Apr 14–25, 2025</td>
+            <td>SRS Course 1 — plan approved and delivered</td>
+            <td>30 Gy / 5 fractions · Cerebellar vermis · Plan and delivery documented in same source file</td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/UPLOAD-SRS-SETTINGS.pdf" target="_blank">📄 SRS Settings</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Jun 5, 2025</td>
+            <td>CT Head W-O IV Contrast — University Health</td>
+            <td>Post-SRS assessment · ~6 weeks after SRS Course 1 completion</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20HEAD%20WO%20IV%20CONTRAST%206-5-2025.pdf" target="_blank">PDF</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Jun 12, 2025</td>
+            <td>MRI Brain — post-SRS response</td>
+            <td><span class="size-pill best">1.0 × 0.6 × 1.0 cm ✓ best response</span></td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-6-12-2025.pdf" target="_blank">📄 MRI Report</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Aug 8, 2025</td>
+            <td>MRI Brain — regrowth confirmed</td>
+            <td><span class="size-pill">1.4 cm</span> enhancing mass</td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging.pdf" target="_blank">📄 MRI Report</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Nov 9, 2025</td>
+            <td>Northeast Baptist ER — new left frontal lesion identified</td>
+            <td>CT Head W/W-O Contrast: 1 cm L frontal nodular enhancement (new) + 6 mm cerebellar vermis focus · Discharged by Dr. Khan MD, Fahad</td>
+            <td>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%2011-9-2025.pdf" target="_blank">CT Report</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%2011-9-2025%20-%2014%20PGS.pdf" target="_blank">CCD</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Nov 12, 2025</td>
+            <td>MRI Brain — further growth + new lesion</td>
+            <td><span class="size-pill">1.9 × 1.7 cm</span> (from 1.3 × 1.2 cm on 8/8/25) + new <strong>R</strong> frontal mass 0.7 × 0.8 cm* · Associated T2/FLAIR hyperintensity · Source: Baptist M&S Northcentral MRI report<br><span style="font-size:11px;color:var(--muted)">*Note: Nov 9, 2025 Baptist ER CT identified a <strong>left</strong> frontal lesion (1 cm); Nov 12 MRI identifies a <strong>right</strong> frontal mass (0.7 × 0.8 cm). These may represent two separate lesions or a laterality discrepancy between reports. Radiological reconciliation of actual images recommended.</span></td>
+            <td>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MRI-Brain-Baptist-MS-Imaging-1.pdf" target="_blank">📄 MRI Report</a>
+              <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging.pdf" target="_blank">📄 Aug 8 (compare)</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Jan 22–30, 2026</td>
+            <td>Inpatient stay — ataxia, elevated BP · left AMA 1/15 for radiation then readmitted 1/22</td>
+            <td>University Hospital admission · CT Abd/Pelvis + CT Chest 1/23 (Dr. Buschardt) · MRI Brain Perfusion 1/24 (Dr. Mahmoud) · MRI CTL 1/29/26: stable T9 focal lesion mild expansile, stable inferior T3 (0.8 cm), stable anterosuperior L3</td>
+            <td>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20ABDOMEN%20PELVIS%20W%20IV%20CONTRAST%20-%20BUSCHARDT%201-23-2026.pdf" target="_blank">CT Abd/Pelvis</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20CHEST%20W%20IV%20CONTRAST%20-%20BUSCHARDT%201-23-2026.pdf" target="_blank">CT Chest</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20PERFUSION%20WITH%20AND%20WITHOUT%20CONTRAST%20-%20MAHMOUD1-24-2026.pdf" target="_blank">MRI Perfusion</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Feb 4–6, 2026</td>
+            <td>SRS Course 2 — Mays Cancer Center · Left Frontal lesion only (Dr. Dalwadi)</td>
+            <td><strong>27 Gy / 3 fractions</strong> SRT-VMAT · Left frontal lesion only · Neuro-onc tumor board 2/6/26 → decision to watch cerebellar vermis · <strong style="color:var(--red)">Dominant vermis NOT treated</strong></td>
+            <td><span style="font-size:11px;color:var(--amber)">⚠ Radiation Oncology treatment notes — not yet uploaded</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Feb 18, 2026</td>
+            <td>CT Chest/Abd/Pelvis</td>
+            <td>Vertebral lesions; systemic assessment</td>
+            <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MyReport.pdf" target="_blank">📄 CT Report</a></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Mar 29–Apr 7, 2026</td>
+            <td>Northeast Baptist Hospital — Inpatient<br><span style="font-size:11px">Right-sided weakness, headache, SOB, right leg pain · Stopped Eliquis prior (nosebleeds + thrombocytopenia) · MRI Brain 3/29/26: multiple new brain mets + mild/mod hydrocephalus · Acute hypoxemic resp failure 3/31/26 requiring high-flow NC · VQ scan: bilateral PE (R&gt;L) → heparin drip → transitioned to Eliquis 4/3/26 · Echo 4/1/26: no right heart strain · Plt dropped 96→79→141 (consumptive from PE) · BP up to 218/121 → IV labetalol · Metabolic encephalopathy + AKI · R-sided weakness resolved at discharge · Neurology consulted; started on aspirin + statin</span></td>
+            <td><span class="size-pill" style="background:var(--green-light);color:var(--green)">✅ 223 pages obtained</span></td>
+            <td>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2003-29-2026%20to%2004-7-2026%201-75.pdf" target="_blank">pg 1–75</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2003-29-2026%20to%2004-7-2026%2076-150.pdf" target="_blank">pg 76–150</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2003-29-2026%20to%2004-7-2026%20151-223.pdf" target="_blank">pg 151–223</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Apr 10, 2026</td>
+            <td>MRI Brain W/W-O Contrast — University Health · Dr. Manoj Kumar (signed 4/12/26)</td>
+            <td>Vermis: <strong>2.2 × 2.6 × 2.2 cm ↑</strong> — <strong>last formally measured size</strong> · L lower cerebellar: <strong>1.1 × 1.0 × 1.1 cm ↑</strong> · L frontal: <strong>↓ 9 mm</strong> (SRS response) · New 2–3 mm nodular lesions L lateral cerebellum + bilateral occipital lobes · No hydrocephalus or midline shift</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20W%20AND%20WO%20IV%20CONTRAST%20-%20DALWADI%204-10-2026.pdf" target="_blank">PDF</a></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Apr 14, 2026</td>
+            <td>Radiation Oncology follow-up — Dr. Dalwadi, Mays · Post-SRS Course 2 review</td>
+            <td>BP 167/117 (!) · Wt 218 lb · SpO₂ 91% · KPS 90 · Pressured speech + tangential thought documented · MRI 4/10 shows mixed response · Patient requested second opinion at MD Anderson prior to proceeding with further local treatment · Neurosurgery referral recommended urgently</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/After%20Visit%20Summary%20-%20Dalwadi.pdf" target="_blank">📄 AVS</a></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">Apr 16, 2026</td>
+            <td>Medical Oncology — Dr. William Kelly, Mays · Thoracic Oncology</td>
+            <td>BP 187/101 (!) · Wt 219 lb · KPS 70 · Bilateral leg edema · Ataxia · Pressured speech · Tangential thought · Dexamethasone self-managed 4 mg alternating 2 mg (patient chosen regimen) · Could not get losartan due to insurance · Orders: CT Abd/Pelvis + CT Chest + weekly CBC/CMP · Return in 2 weeks · Care continuity concern formally documented</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/Office%20Visit%20-%20Apr%2016%2C%202026.pdf" target="_blank">📄 Note</a> <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/After%20Visit%20Summary%20Apr%2016%2C%202026.PDF" target="_blank">📄 AVS</a></td>
+          </tr>
+          <tr>
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">May 22, 2026</td>
+            <td>Northeast Baptist ER — night before Stone Oak admission</td>
+            <td>Presented with headache · Discharge diagnosis: <strong>"General Headache Without Cause"</strong> · Dr. Mena MD, Miguel A · Discharged 5:25 AM · Known brain mets at time of visit</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%205-22-2026.pdf" target="_blank">Discharge Record</a></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">05/23/2026</td>
+            <td>Admitted — Methodist Hospital Stone Oak<br><span style="font-size:11px;color:var(--muted)">Acute dysarthria, dysphagia, ataxia, left-sided weakness, confusion</span></td>
+            <td>Admitted 05/23/2026 · Discharged 05/28/2026 · Source: Methodist Stone Oak Continuity of Care Document</td>
+            <td>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-23-2026%20-%20b.pdf" target="_blank">CT Head (a)</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-23-2026%20-%20c.pdf" target="_blank">CT Head (b)</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MRA%20Head%20vessels%20WO%20and%20W%20contrast%20IV%205-23-2026.pdf" target="_blank">MRA</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/XR%20Chest%20Views%205-23-2026.pdf" target="_blank">XR Chest</a>
+            </td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">05/24/2026</td>
+            <td>CT Head — Posterior fossa mets with mass effect</td>
+            <td>No hemorrhage · Mild ventricular dilatation · Dr. Kenneth Sandoval MD</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-24-2026.pdf" target="_blank">PDF</a></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">05/24/2026</td>
+            <td>MRI Brain W/W-O Contrast — Multiple parenchymal mets confirmed</td>
+            <td>Largest: inferior vermis <strong>3.0 × 2.4 cm</strong> + left cerebellar 1.6 × 2.1 cm + multiple subcentimeter bilateral cerebellar + frontal/parietal mets · 4th ventricle effacement · vasogenic edema bilateral cerebellar hemispheres · no foraminal herniation · Dr. David Wood MD</td>
+            <td><span style="font-size:11px;color:var(--muted)">Standalone PDF not available through patient-facing channels (confirmed by Methodist Stone Oak 05/31/2026) · Full report text embedded in Stone Oak CCD · Original record available to MD Anderson directly from Methodist Stone Oak HIM: (844) 481-0278</span></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">05/25/2026</td>
+            <td>MRI C/T/L Spine — <strong style="color:var(--green)">NO metastatic disease</strong></td>
+            <td>T9: hemangioma + chronic 35% compression · L3: chronic end plate Schmorl's node · No suspicious enhancement · Dr. Dipan Patel MD</td>
+            <td>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Thoracic%20spine%20WO%20and%20W%20contrast%20IV.pdf" target="_blank">Thoracic</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Cervical%20spine%205-25-2026.pdf" target="_blank">Cervical</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Lumbar%20spine%205-25-2026.pdf" target="_blank">Lumbar</a>
+            </td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">05/25/2026</td>
+            <td>CT Chest/Abd/Pelvis — <strong style="color:var(--green)">NO active systemic metastasis</strong></td>
+            <td>Right lung: post-treatment changes, no recurrent disease · T3/T9: sclerosis = treated disease · No liver/LN mets · Dr. Travis Lyons MD</td>
+            <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Abdomen%20and%20Pelvis%20WO%20and%20W%20contrast%20IV%205-25-2026.pdf" target="_blank">PDF</a></td>
+          </tr>
+          <tr style="background:#f9edf9;border-left:3px solid #c060d0">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap;color:#7b2d8b;font-weight:600">05/25/2026</td>
+            <td><strong style="color:#7b2d8b">Leptomeningeal Disease — Identified by Neurosurgery</strong></td>
+            <td>Dr. Jason Boulter MD identified enhancement in a spiculated pattern along the cerebellar folia from the vermian lesion on independent review of the 05/24 MRI — <strong>consistent with leptomeningeal disease</strong> · Not documented in Dr. Wood's radiology impression · Basis for surgical exclusion · LP/cytology not performed</td>
+            <td><span style="font-size:11px;color:#7b2d8b">Dr. Boulter NSGY Note 05/25/2026</span></td>
+          </tr>
+          <tr class="">
+            <td style="font-family:var(--mono);font-size:11px;white-space:nowrap">05/28/2026</td>
+            <td>Discharged home · Outpatient radiation recommended · MD Anderson tumor board referral pending</td>
+            <td><span class="size-pill current">Last measured: 2.6 cm (Apr 10) ⚠</span><br><span style="font-size:11px;color:var(--muted)">May 24 ER MRI confirmed further growth but did not re-measure (ER protocol addresses acute risk, not tumor dimensions). Apr 10 remains the last formal oncologic measurement. Repeat oncologic MRI urgently needed.</span></td>
+            <td><span style="font-size:11px;color:var(--slate)">19535 Crystal Oak, San Antonio TX 78258 · 24/7 supervision required · Dexamethasone 4 mg q8h · Tagrisso 80 mg daily · Eliquis restart unresolved</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MOLECULAR -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">Mol</span><h2>Molecular Profile</h2></div>
+    <div class="card-body">
+      <div class="mol-grid">
+        <div class="mol-item positive">
+          <div class="m-label">Primary Driver</div>
+          <div class="m-value">EGFR Exon 19 del</div>
+          <div class="m-note">TEMPUS DNA — 2024-10-18 · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/10-29-2024-TEMPUS%20DNA%20REPORT.pdf" target="_blank">📄 Report</a></div>
+        </div>
+        <div class="mol-item flag">
+          <div class="m-label">Co-Mutation</div>
+          <div class="m-value">BRCA2 pathogenic variant</div>
+          <div class="m-note">Potential therapeutic relevance</div>
+        </div>
+        <div class="mol-item">
+          <div class="m-label">Liquid Biopsy</div>
+          <div class="m-value">Guardant360</div>
+          <div class="m-note"><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/4-23-2025-Guardant360%20panel.pdf" target="_blank">📄 Panel 2025-04-23</a></div>
+        </div>
+        <div class="mol-item">
+          <div class="m-label">Pathology</div>
+          <div class="m-value">Lung Adenocarcinoma</div>
+          <div class="m-note">Stage IV · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/4-23-2025-Pathology%20report.pdf" target="_blank">📄 Report 2025-04-23</a></div>
+        </div>
+        <div class="mol-item">
+          <div class="m-label">Current Systemic Rx</div>
+          <div class="m-value">Osimertinib (Tagrisso) 80 mg</div>
+          <div class="m-note">Daily — CNS still progressing despite therapy</div>
+        </div>
+        <div class="mol-item positive">
+          <div class="m-label">Systemic Disease Status</div>
+          <div class="m-value">No Active Mets ✓</div>
+          <div class="m-note">CT CAP 05/25 — right lung post-treatment, no recurrence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROVIDERS THIS ADMISSION -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">MD</span><h2>Care Team — Full Provider List</h2></div>
+    <div class="card-body">
+      <div style="margin-bottom:12px;padding:8px 12px;background:#f0f5fd;border:1px solid #c0d4f0;border-radius:5px;font-size:12px;"><strong style="color:#1a5fb4">Note:</strong> Patient has been seen across multiple institutions. Care continuity has been formally flagged as a concern by Dr. Kelly (4/16/2026): patient is a poor historian with paraphasia, extreme difficulty navigating the healthcare system, and is seeing multiple specialists simultaneously. A single "quarterback" oncologist has been strongly recommended.</div>
+      <div class="provider-grid">
+        <div class="provider-item">
+          <div class="p-role">Medical Oncology — Prior / Texas Oncology</div>
+          <div class="p-name">Dr. Krishna Alluri, MD</div>
+          <div class="p-dept">Texas Oncology · SA Northeast · 2130 NE Loop 410, Ste 100 · (210) 656-7177 · Last visit 02/17/2026</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Attending / Hematology-Oncology</div>
+          <div class="p-name">Dr. Neel M. Shah, DO</div>
+          <div class="p-dept">Methodist Hospital Stone Oak</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Attending (Admitting Internal Medicine)</div>
+          <div class="p-name">Dr. Michelle R. Boylston, DO</div>
+          <div class="p-dept">Methodist Hospital Stone Oak</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Neurosurgery Consult</div>
+          <div class="p-name">Dr. Jason H. Boulter, MD</div>
+          <div class="p-dept">Consulted 05/24/2026</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Oncology Consult</div>
+          <div class="p-name">Dr. John Ogden, MD</div>
+          <div class="p-dept">Consulted 05/25/2026</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Neurology Consult</div>
+          <div class="p-name">Marcie L. Lewis, AGANP</div>
+          <div class="p-dept">Consulted 05/24/2026</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Primary Care Physician</div>
+          <div class="p-name">Dr. Sudhir R. Gogu, DO</div>
+          <div class="p-dept">PCP on Record</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Medical Oncology — Thoracic / Mays Cancer Center</div>
+          <div class="p-name">Dr. William Kelly, MD</div>
+          <div class="p-dept">Hematology/Oncology · UTH Mays Cancer Center · (210) 450-1000 · Last visit 04/16/2026 · Ordered Jan 14 labs · G2211 attestation: long-term focal point of care</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Radiation Oncology — Mays Cancer Center</div>
+          <div class="p-name">Dr. Shraddha M. Dalwadi, MD, MBA</div>
+          <div class="p-dept">Dept of Radiation Oncology · UTHSCSA MD Anderson Mays · Delivered SRS Course 2 (L frontal, 02/04–02/06/2026) · Last visit 04/14/2026</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Neuroradiology — University Health (Apr 10 MRI)</div>
+          <div class="p-name">Dr. Manoj Kumar, MD</div>
+          <div class="p-dept">University Health · 4502 Medical Drive · (210) 358-8532 · Signed Apr 10, 2026 MRI Brain report</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Case Management</div>
+          <div class="p-name">Jennifer Powell / Rhiannon Medina</div>
+          <div class="p-dept">Discharge Planning — Home + Home Health · Sabrina Bustamante (UHS Oncology Transitions of Care)</div>
+        </div>
+        <div class="provider-item">
+          <div class="p-role">Surrogate Decision Maker</div>
+          <div class="p-name">Carol Clayborne (Sister)</div>
+          <div class="p-dept">(832) 963-6234</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGING INDEX -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">Img</span><h2>Imaging Index — All Studies</h2></div>
+    <div class="card-body">
+
+      <div class="img-section-title">Brain Studies — Methodist Stone Oak Admission (05/23–05/28/2026)</div>
+      <div class="img-grid">
+        <div class="img-row">
+          <div class="img-date">05/23/2026</div>
+          <div class="img-type-badge ct">CT</div>
+          <div class="img-desc"><strong>CT Head (a) — Initial ER arrival</strong> — No acute abnormalities</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-23-2026%20-%20b.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/23/2026</div>
+          <div class="img-type-badge ct">CT</div>
+          <div class="img-desc"><strong>CT Head (b) — Second CT study</strong></div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-23-2026%20-%20c.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/23/2026</div>
+          <div class="img-type-badge ct">CT</div>
+          <div class="img-desc"><strong>MRA Head vessels WO and W Contrast</strong></div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MRA%20Head%20vessels%20WO%20and%20W%20contrast%20IV%205-23-2026.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/23/2026</div>
+          <div class="img-type-badge ct">CT</div>
+          <div class="img-desc"><strong>XR Chest Views</strong></div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/XR%20Chest%20Views%205-23-2026.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/24/2026</div>
+          <div class="img-type-badge ct">CT</div>
+          <div class="img-desc"><strong>CT Head</strong> — Posterior fossa metastases with mass effect, mild ventricular dilatation · Dr. Kenneth Sandoval MD</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-24-2026.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/24/2026</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc"><strong>MRI Brain W/W-O Contrast</strong> — Vermis 3.0 × 2.4 cm + left cerebellar 1.6 × 2.1 cm + multiple subcentimeter bilateral cerebellar + bilateral frontal/parietal mets · 4th ventricle effacement · bilateral cerebellar vasogenic edema · no foraminal herniation · Dr. David Wood MD</div>
+          <div class="img-links"><span style="font-size:11px;color:var(--muted)">Standalone PDF not available through patient-facing channels (confirmed 05/31/2026) · Full report text embedded in Stone Oak CCD · MD Anderson may request directly from Methodist Stone Oak HIM: (844) 481-0278</span></div>
+        </div>
+      </div>
+
+      <div class="img-section-title">Spine + Body Studies — Methodist Stone Oak (05/25/2026)</div>
+      <div class="img-grid">
+        <div class="img-row">
+          <div class="img-date">05/25/2026</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc"><strong>MRI Cervical / Thoracic / Lumbar Spine W/W-O</strong> — ✅ NO metastatic disease. T9: hemangioma + chronic fx. L3: chronic. No suspicious enhancement. · Dr. Dipan Patel MD · Single combined spine study</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Thoracic%20spine%20WO%20and%20W%20contrast%20IV.pdf" target="_blank">Thoracic</a>
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Cervical%20spine%205-25-2026.pdf" target="_blank">Cervical</a>
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Lumbar%20spine%205-25-2026.pdf" target="_blank">Lumbar</a>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/25/2026</div>
+          <div class="img-type-badge ct">CT</div>
+          <div class="img-desc"><strong>CT Chest/Abdomen/Pelvis</strong> — ✅ NO active metastasis. Right lung: post-treatment. T3/T9: sclerosis = treated. No liver/LN mets. · Dr. Travis Lyons MD</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Abdomen%20and%20Pelvis%20WO%20and%20W%20contrast%20IV%205-25-2026.pdf" target="_blank">PDF</a></div>
+        </div>
+      </div>
+
+      <div class="img-section-title">Prior Brain MRI Studies</div>
+      <div class="img-grid">
+        <div class="img-row">
+          <div class="img-date">Apr 2, 2025</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc">Brain — Initial large vermian mass (3.1 cm)</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/storage/RADRPT-04-02-2025.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Jun 12, 2025</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc">Brain — Post-SRS best response (1.0 cm)</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-6-12-2025.pdf" target="_blank">PDF</a>
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/6-12-2025-MRI%20Brain-Unknown-MRI%20Brain-Unknown.pdf" target="_blank">TX Onc</a>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Aug 8, 2025</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc">Brain W/W-O Contrast — regrowth (1.4 cm)</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging.pdf" target="_blank">PDF</a>
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/m_and_s_imaging/8-8-2025-MR%20BRAIN%20W%2CW-O%20CONTRAST.pdf" target="_blank">M&S</a>
+            <a class="btn-sm btn-zip" href="https://kdc-med-records.uk/mdanderson-two/m_and_s_imaging/8-8-2025-MR%20BRAIN%20W%2CW-O%20CONTRAST-STUDY.zip" target="_blank">DICOM</a>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Nov 12, 2025</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc">Brain W/W-O Contrast — 1.9 cm + new frontal lesion</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging-1.pdf" target="_blank">PDF</a>
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/m_and_s_imaging/11-12-2025-MR%20BRAIN%20W%2CW-O%20CONTRAST.pdf" target="_blank">M&S</a>
+            <a class="btn-sm btn-zip" href="https://kdc-med-records.uk/mdanderson-two/m_and_s_imaging/11-12-2025-MR%20BRAIN%20W%2CW-O%20CONTRAST-STUDY.zip" target="_blank">DICOM</a>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Jan 16, 2026</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc">Brain W/W-O Contrast — most recent pre-current</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/m_and_s_imaging/1-16-2026-MR%20BRAIN%20W%2CW-O%20CONTRAST.pdf" target="_blank">M&S PDF</a>
+            <a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/1-16-2026-MRI%20Brain-Orthopedic%20%26%20Neurologic%20Imaging%20Institute.pdf" target="_blank">ONLI PDF</a>
+            <a class="btn-sm btn-zip" href="https://kdc-med-records.uk/mdanderson-two/m_and_s_imaging/1-16-2026-MR%20BRAIN%20W%2CW-O%20CONTRAST-STUDY.zip" target="_blank">DICOM</a>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Apr 10, 2026</div>
+          <div class="img-type-badge mri">MRI</div>
+          <div class="img-desc"><strong>Brain W/W-O Contrast — University Health</strong> · Vermis ↑ 2.2×2.6×2.2 cm (from 1.4×2.4×1.3) · L lower cerebellar ↑ 1.1×1.0×1.1 cm · L frontal ↓ 9 mm (SRS response) · New 2–3 mm nodular L lateral cerebellum + bilateral occipital lobes · No hydrocephalus · Dr. Manoj Kumar / referred by Dr. Dalwadi · Accession LI115551</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20W%20AND%20WO%20IV%20CONTRAST%20-%20DALWADI%204-10-2026.pdf" target="_blank">PDF</a></div>
+        </div>
+      </div>
+
+      <div class="img-section-title">Key Clinical Documents</div>
+      <div class="img-grid">
+        <div class="img-row">
+          <div class="img-date">Oct 2024</div>
+          <div class="img-type-badge" style="background:#f5ecd8;color:#8b5e00;width:38px">DNA</div>
+          <div class="img-desc">TEMPUS DNA Report — EGFR + BRCA2</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/10-29-2024-TEMPUS%20DNA%20REPORT.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Apr 2025</div>
+          <div class="img-type-badge" style="background:#f5ecd8;color:#8b5e00;width:38px">PATH</div>
+          <div class="img-desc">Pathology Report — Lung Adenocarcinoma</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/4-23-2025-Pathology%20report.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Apr 2025</div>
+          <div class="img-type-badge" style="background:#f5ecd8;color:#8b5e00;width:38px">LBx</div>
+          <div class="img-desc">Guardant360 Liquid Biopsy Panel</div>
+          <div class="img-links"><a class="btn-sm btn-pdf" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/4-23-2025-Guardant360%20panel.pdf" target="_blank">PDF</a></div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">Jan 2026</div>
+          <div class="img-type-badge" style="background:#e8edf2;color:var(--slate);width:38px">HOSP</div>
+          <div class="img-desc">University Hospital Inpatient Stay (Jan 22–30, 2026) — No standalone hospital summary available. Clinical details documented in Dr. Kelly's Apr 16, 2026 note. Imaging available: CT Abd/Pelvis, CT Chest (Dr. Buschardt 1/23), MRI Brain Perfusion (Dr. Mahmoud 1/24).</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20ABDOMEN%20PELVIS%20W%20IV%20CONTRAST%20-%20BUSCHARDT%201-23-2026.pdf" target="_blank">CT Abd/Pelvis</a>
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20CHEST%20W%20IV%20CONTRAST%20-%20BUSCHARDT%201-23-2026.pdf" target="_blank">CT Chest</a>
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20PERFUSION%20WITH%20AND%20WITHOUT%20CONTRAST%20-%20MAHMOUD1-24-2026.pdf" target="_blank">MRI Perfusion</a>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-date">05/26/2026</div>
+          <div class="img-type-badge" style="background:#e8d4a0;color:#8b5000;width:38px">CCD</div>
+          <div class="img-desc"><strong>Continuity of Care Document — Methodist Stone Oak (HCA)</strong> — Source of this update. Contains full inpatient notes, labs, imaging, medications.</div>
+          <div class="img-links">
+            <a class="btn-sm btn-pdf" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/KAREN%205-28%20DISCHARGE%20SUMMARY%20-%20STONE%20OAK.pdf" target="_blank">Discharge Summary</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOSPITALIZATION + CONTACTS -->
+  <div style="display:flex;flex-direction:column;gap:20px">
+
+    <div class="card">
+      <div class="card-header"><span class="icon-text">Hx</span><h2>Hospitalization History</h2></div>
+      <div class="card-body">
+        <div class="hosp-list">
+          <div class="hosp-item">
+            <div class="hosp-date">Apr 1–3, 2025</div>
+            <div class="hosp-body">
+              <strong>Northeast Baptist Hospital — Initial CNS Discovery</strong>
+              <span>Cerebellar vermis lesion (~3.1 cm) first formally confirmed · MRI Brain Apr 2: 3.1 × 2.4 × 3.0 cm, 4th ventricle effacement · MRI Abdomen Apr 3: T3, T9, L3 spinal lesions · SRS planning initiated ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-1-2025%20to%2004-3-2025%20PGS%201-50.pdf" target="_blank">CCD pg 1–50</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-1-2025%20to%2004-3-2025%20PGS%2051-100.pdf" target="_blank">pg 51–100</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-1-2025%20to%2004-3-2025%20PGS%20101-128.pdf" target="_blank">pg 101–128</a></span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">Apr 8, 2025</div>
+            <div class="hosp-body">
+              <strong>Northeast Baptist — Follow-up Episode Note</strong>
+              <span>Post-admission follow-up · Transition note after Apr 1–3 SRS planning admission ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-8-2025%20to%2004-8-2025.pdf" target="_blank">CCD</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/Summarization%20of%20Episode%20Note%20%2004-8-2025%20to%2004-8-2025.pdf" target="_blank">CCD (alt)</a></span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">May 7, 2025</div>
+            <div class="hosp-body">
+              <strong>Episode Note — Post-SRS Course 1</strong>
+              <span>~2 weeks after SRS Course 1 completion · <span style="font-size:11px;color:var(--muted)">File needs to be re-downloaded from source portal as PDF — current file is not valid</span></span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">May 30, 2025</div>
+            <div class="hosp-body">
+              <strong>Episode Note — Pre-MRI Follow-up</strong>
+              <span>~2 weeks before the Jun 12, 2025 post-SRS MRI showing best response (1.0 cm) ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/Summarization%20of%20Episode%20Note%20%2005-30-2025%20to%2005-30-2025.pdf" target="_blank">CCD</a></span>
+            </div>
+          </div>
+            <div class="hosp-body">
+              <strong>UT Health ER</strong>
+              <span>Suspected radiation necrosis vs. progression</span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">Nov 9, 2025</div>
+            <div class="hosp-body">
+              <strong>Northeast Baptist ER</strong>
+              <span>New 6 mm left frontal lesion + 6 mm cerebellar vermis focus identified on CT Head W/W-O Contrast · Dr. Bukowski RTR, Kelsi · Discharged by Dr. Khan MD, Fahad 11/10/2025 1:50 AM ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%2011-9-2025.pdf" target="_blank">CT Report</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%2011-9-2025%20-%2014%20PGS.pdf" target="_blank">CCD (14 pg)</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%2011-9-2025%20-%20POSSIBLE%20COPY.pdf" target="_blank">CCD (copy)</a></span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">Jan 22–30, 2026</div>
+            <div class="hosp-body">
+              <strong>University Hospital — Inpatient</strong>
+              <span>Ataxia, elevated BP · Left AMA 1/15 for radiation then readmitted 1/22 · No standalone hospital summary available · Clinical details in Dr. Kelly's Apr 16 note</span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">Mar 29–<br>Apr 7, 2026</div>
+            <div class="hosp-body">
+              <strong>Northeast Baptist Hospital — Inpatient (223 pages)</strong>
+              <span>Admitted: right-sided weakness, headache, SOB, right leg pain · MRI 3/29: multiple new brain mets + mild/mod hydrocephalus · Acute hypoxemic resp failure 3/31 · Bilateral PE on VQ scan → heparin drip · Plt 96→79→141 (consumptive) · BP 218/121 → IV labetalol · Metabolic encephalopathy + AKI · Neurology consulted → aspirin + statin started · R-sided weakness resolved at discharge ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2003-29-2026%20to%2004-7-2026%201-75.pdf" target="_blank">CCD pg 1–75</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2003-29-2026%20to%2004-7-2026%2076-150.pdf" target="_blank">pg 76–150</a>
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2003-29-2026%20to%2004-7-2026%20151-223.pdf" target="_blank">pg 151–223</a></span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date">May 22, 2026</div>
+            <div class="hosp-body">
+              <strong>Northeast Baptist ER — Night Before Stone Oak Admission</strong>
+              <span>Presented with headache · Discharge diagnosis: <strong>"General Headache Without Cause"</strong> · Dr. Mena MD, Miguel A · Discharged 05/22/2026 at 5:25 AM · <strong>Note: This ER visit occurred the night before the Stone Oak admission for acute dysarthria and brainstem compression. Patient had known stage IV NSCLC with documented brain mets at time of this visit.</strong> ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%205-22-2026.pdf" target="_blank">Discharge Record</a></span>
+            </div>
+          </div>
+          <div class="hosp-item">
+            <div class="hosp-date" style="color:var(--green);font-weight:600">05/23–<br>05/28/2026<br>✓ DC'd</div>
+            <div class="hosp-body">
+              <strong>Methodist Hospital Stone Oak — Discharged 05/28/2026</strong>
+              <span>Admitted with acute dysarthria, dysphagia, ataxia, left-sided weakness · Acct K509976683 · Dr. Boylston / Dr. Shah attending · Neurosurgery (Dr. Boulter) + Oncology (Dr. Ogden) consulted · Leptomeningeal disease identified · Discharged home to 19535 Crystal Oak · Outpatient radiation recommended · MD Anderson tumor board referral pending ·
+              <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/KAREN%205-28%20DISCHARGE%20SUMMARY%20-%20STONE%20OAK.pdf" target="_blank">Discharge Summary</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span class="icon-text">Rx</span><h2>Emergency Contacts</h2></div>
+      <div class="card-body">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="c-label">Patient</div>
+            <div class="c-name">Karen Clayborne</div>
+            <div class="c-rel">19535 Crystal Oak, SA TX 78258</div>
+            <div class="c-phone">(210) 974-1663 (home)</div>
+            <div class="c-phone" style="font-size:11px;margin-top:2px">kclayborne1966@gmail.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-label">Mother (Lives with patient)</div>
+            <div class="c-name">Jean Howelton Clayborne Thomas</div>
+            <div class="c-phone">(210) 974-1663</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-label">Sibling / Surrogate DM</div>
+            <div class="c-name">Carol Clayborne (Porter)</div>
+            <div class="c-phone">(832) 963-6234</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-label">Sibling</div>
+            <div class="c-name">Kimberly Clayborne</div>
+            <div class="c-phone">(832) 885-7245</div>
+          </div>
+          <div class="contact-item">
+            <div class="c-label">Sibling</div>
+            <div class="c-name">Kellie Maxwell</div>
+            <div class="c-phone">(210) 313-0010</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAST MEDICAL / SURGICAL / FAMILY HISTORY -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">TB</span><h2>Past Medical, Surgical &amp; Family History</h2></div>
+    <div class="card-body">
+      <div class="two-col" style="gap:16px">
+        <div>
+          <div class="img-section-title" style="margin-top:0">Past Medical History</div>
+          <div class="med-list" style="gap:5px">
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">EGFR-related lung cancer (NSCLC adenocarcinoma)</div><div class="med-dose">Diagnosed 10/2024</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Malignant neoplasm of brain (metastasis)</div><div class="med-dose">Diagnosed 03/2025</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Pulmonary embolism — bilateral (chronic/recurrent)</div><div class="med-dose">DVT peroneal vein 5/7/25 · PE 5/30/25 · IJ occlusive DVT 6/14/25 · Bilateral PE 3/31/26 · On lifelong anticoagulation</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Hypertension — uncontrolled, multi-agent</div><div class="med-dose">BP ranging 156/89 to 223/128 across encounters</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Diabetes mellitus type 2 — steroid-induced</div><div class="med-dose">HbA1c 9.8% · Est. avg glucose 235 mg/dL</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Bone metastasis — T3, T9, L3 (treated/sclerotic)</div><div class="med-dose">Now showing treated changes on CT 05/25/2026</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Small bowel perforation — sigmoid diverticulitis</div><div class="med-dose">Admitted 06/10/2025 · Conservatively managed · General surgery consulted</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Chronic migraine without aura</div><div class="med-dose">Pre-existing</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Germline BRCA2 mutation (F2560fs, VAF 48.8%)</div><div class="med-dose">Suspected germline · Genetic testing for patient and family recommended</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Zoledronic acid (Zometa) — skeletal metastasis</div><div class="med-dose">Started 09/18/2025 · Continue per Dr. Kelly plan</div></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="img-section-title" style="margin-top:0">Past Surgical History</div>
+          <div class="med-list" style="gap:5px">
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Myomectomy</div><div class="med-dose">2005</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Right chest thoracentesis / pleural tap</div><div class="med-dose">09/27/2024 · Dr. Gabino Miranda · Pathology: adenocarcinoma metastatic from lung primary (CK7+, TTF-1+, p16+)</div></div></div>
+          </div>
+          <div class="img-section-title">Family History of Cancer</div>
+          <div class="med-list" style="gap:5px">
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Esophageal Cancer</div><div class="med-dose">Father</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Lung Cancer</div><div class="med-dose">Paternal Grandfather — relevant to germline BRCA2 testing recommendation</div></div></div>
+          </div>
+          <div class="img-section-title">Social History</div>
+          <div class="med-list" style="gap:5px">
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Tobacco / Alcohol / Drugs</div><div class="med-dose">Never smoker (no passive exposure) · No alcohol · No drugs</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Marital status</div><div class="med-dose">Single · Lives with mother (Jean Howelton Clayborne Thomas)</div></div></div>
+            <div class="med-row" style="padding:6px 10px" style="border-color:#e8c0bd;background:var(--red-light)"><div><div class="med-name" style="font-size:12px">Transportation — Unmet Need ⚠</div><div class="med-dose">Lack of transportation has prevented medical appointments and medication access in past 12 months (per PRAPARE screening 1/24/2026)</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">PHQ-2 Depression Screen</div><div class="med-dose">Score 0 — Not at risk (4/14/2026) · Financial strain: low risk · Housing: stable</div></div></div>
+            <div class="med-row" style="padding:6px 10px"><div><div class="med-name" style="font-size:12px">Advance Directive</div><div class="med-dose">None on file at Mays Cancer Center as of 4/16/2026 · Texas advance directive options explained to patient</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECORDS LOCATIONS -->
+  <div class="card">
+    <div class="card-header"><span class="icon-text">Rec</span><h2>Records Locations — Key Contacts for DICOM Retrieval</h2></div>
+    <div class="card-body" style="padding:0;overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Facility</th>
+            <th>Phone</th>
+            <th>Fax</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class=""><td><strong>Methodist Hospital Stone Oak (HCA)</strong></td><td style="font-family:var(--mono);font-size:11px">(210) 638-2901</td><td style="font-family:var(--mono);font-size:11px">210-638-3816</td><td style="font-size:11px"><strong>Discharged 05/28/2026 · Records via HIM</strong> · HIM: (844) 481-0278</td></tr>
+          <tr><td>Baptist M&S Imaging / M&S Imaging</td><td style="font-family:var(--mono);font-size:11px">(210) 785-2590 / (210) 297-7005</td><td style="font-family:var(--mono);font-size:11px">210-616-7787</td><td style="font-size:11px">Portal: patient.msris.com · PowerShare capable</td></tr>
+          <tr><td>University Health — University Hospital</td><td style="font-family:var(--mono);font-size:11px">(210) 358-4000</td><td style="font-family:var(--mono);font-size:11px">210-358-5936</td><td style="font-size:11px">DICOM: 210-358-8532 · MyChart available</td></tr>
+          <tr><td>Texas Oncology — SA Medical Center</td><td style="font-family:var(--mono);font-size:11px">(210) 595-5300</td><td style="font-family:var(--mono);font-size:11px">(210) 656-3687</td><td style="font-size:11px">Contacts: Kary, Zenia · DICOM manually released</td></tr>
+          <tr><td>Northeast Baptist Hospital</td><td style="font-family:var(--mono);font-size:11px">(210) 297-2000</td><td style="font-family:var(--mono);font-size:11px">210-297-0217</td><td style="font-size:11px">PowerShare to MD Anderson · Imaging: 210-297-2729</td></tr>
+          <tr><td>Mays Cancer Center – UT Health MD Anderson</td><td style="font-family:var(--mono);font-size:11px">(210) 450-1000</td><td style="font-family:var(--mono);font-size:11px">210-450-6058</td><td style="font-size:11px">DICOM burned to CD · 24–48 hr turnaround</td></tr>
+          <tr><td>STRIC – South Texas Radiology</td><td style="font-family:var(--mono);font-size:11px">(210) 617-9000</td><td style="font-family:var(--mono);font-size:11px">210-616-7787</td><td style="font-size:11px">DICOM CDs ready — 2 CDs (DICOMDIR format)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+  <!-- FAMILY OBSERVATIONS SECTION -->
+  <div style="max-width:960px;margin:0 auto;padding:0 24px 24px">
+    <div class="card" style="border-color:#d0d8e4">
+      <div class="card-header" style="background:#f0f2f5;border-bottom:2px solid var(--border)">
+        <span class="icon-text">Fam</span>
+        <h2 style="color:var(--slate)">Supplemental Family-Reported Clinical Observations</h2>
+        <span style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.06em;white-space:nowrap">NOT SOURCED FROM MEDICAL RECORD</span>
+      </div>
+      <div class="card-body">
+        <div style="padding:8px 0 14px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--border);margin-bottom:14px;line-height:1.6">
+          The following observations are reported by the patient's family and are not fully captured in the medical record. They are provided here for clinical completeness as supplemental context. These are not medical conclusions — they are direct observations by family members who have consistent close contact with the patient over time.
+        </div>
+        <div style="display:grid;gap:12px">
+
+          <div style="padding:12px 14px;border:1px solid var(--border);border-radius:5px;background:#fafbfc;font-size:13px">
+            <div style="font-weight:600;margin-bottom:4px;color:var(--navy)">1. Unawareness of Speech Deficit and Difficulty Following Instructions</div>
+            <div style="color:var(--slate);line-height:1.6">Patient was not aware that her speech was significantly slurred — family brought it to her attention by phone. A family member then directed her to perform a stroke self-assessment in the mirror. Patient had significant difficulty understanding what was being asked of her — she interpreted the question as being about facial puffiness rather than neurological signs, and required repeated prompting and rephrasing before she could follow the instruction. Once she understood, she completed the self-assessment and reported no asymmetry; stroke was subsequently ruled out by the treating team. The family member was on the phone and could not directly observe her. The clinical significance here is not the stroke screen result — which was negative — but rather the difficulty the patient had understanding and following a straightforward verbal instruction, which family had not previously observed at this level. Combined with her unawareness of the slurring itself, this raised family concern about cognitive processing that is not reflected in the medical record.</div>
+          </div>
+
+          <div style="padding:12px 14px;border:1px solid var(--border);border-radius:5px;background:#fafbfc;font-size:13px">
+            <div style="font-weight:600;margin-bottom:4px;color:var(--navy)">2. Pre-Admission Speech Deterioration Timeline — Not Captured in Medical Record</div>
+            <div style="color:var(--slate);line-height:1.6">The medical record captures symptoms from ER arrival on May 23, 2026. Family observed the following escalating trajectory in the days prior:<br><br>
+            <strong>~May 21–22:</strong> Family member spoke with patient by phone and noted significant speech slurring. Patient was unaware. Family walked patient through stroke symptom checklist — she reported no other symptoms. Speech appeared to partially clear during the call.<br>
+            <strong>May 23 (Friday):</strong> Speech still impaired on subsequent calls but improved from prior day.<br>
+            <strong>May 24 (Saturday morning):</strong> Speech significantly worse on waking. Patient brought to ER. During admission, speech worsened further then briefly improved, then deteriorated progressively — with word-finding difficulty and emerging comprehension lag added to the dysarthria.<br><br>
+            This 3–4 day pre-admission escalation, with fluctuation and then net deterioration, is not reflected in the hospital record which begins at ER presentation.</div>
+          </div>
+
+          <div style="padding:12px 14px;border:1px solid var(--border);border-radius:5px;background:#fafbfc;font-size:13px">
+            <div style="font-weight:600;margin-bottom:4px;color:var(--navy)">3. Observed Personality and Behavioral Change</div>
+            <div style="color:var(--slate);line-height:1.6">Family has observed a significant personality change characterized by unusual docility, contentment, and overall agreeableness that differs markedly from the patient's baseline character. Family describes this change as resulting in what they observe as reduced self-protective judgment — requiring supervision to ensure the patient's safety in interactions with others. This functional behavioral change has not been captured in any clinical note and is not reflected in the PHQ-2 or other screening tools administered during this admission. Family notes this has developed over recent months and has become more pronounced. No formal neuropsychological assessment has been performed.</div>
+          </div>
+
+          <div style="padding:12px 14px;border:1px solid var(--border);border-radius:5px;background:#fafbfc;font-size:13px">
+            <div style="font-weight:600;margin-bottom:4px;color:var(--navy)">4. Post-Discharge Neurological Deterioration — Observed After 05/28/2026</div>
+            <div style="color:var(--slate);line-height:1.6">Following discharge on 05/28/2026, family has observed continued and progressive neurological deterioration in two areas not captured in any post-discharge medical record:<br><br>
+            <strong>Speech:</strong> Both articulation (dysarthria) and word-finding (anomia) continue to worsen after discharge. The deterioration is ongoing — not stable relative to the discharge baseline.<br><br>
+            <strong>Somnolence:</strong> Patient is sleeping significantly more than her baseline. Increased somnolence in a patient with active posterior fossa mass effect and confirmed brainstem compression may indicate ongoing intracranial pressure changes and warrants prompt clinical evaluation.<br><br>
+            <strong>Performance Status:</strong> Last formally documented KPS was 70 (Dr. Kelly, Apr 16, 2026). Current KPS has not been formally assessed post-discharge. Based on observed decline, functional status is estimated to have deteriorated further. Formal reassessment needed at first outpatient contact.<br><br>
+            These observations are reported as of 05/31/2026 and represent a clinically concerning post-discharge trajectory that has not yet been evaluated by a physician.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="footer">
+  <span>Karen Clayborne · DOB 01/11/1966 · MRN 71441088 · Full records: <strong>kdc-med-records.uk/mdanderson-two</strong></span>
+  <span>Updated 05/26/2026 · Multi-source compilation · All linked documents are live source files · ⚠ Northeast Baptist Mar–Apr 2026 records outstanding</span>
+</div>
+
+</body>
+</html>
