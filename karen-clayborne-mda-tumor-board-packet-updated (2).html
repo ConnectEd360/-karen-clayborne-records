@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Anderson Tumor Board Packet — Karen Clayborne</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #b91c1c;
+    --red-light: #fef2f2;
+    --red-mid: #fee2e2;
+    --amber: #b45309;
+    --amber-light: #fffbeb;
+    --green: #15803d;
+    --green-light: #f0fdf4;
+    --navy: #0f172a;
+    --slate: #334155;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--navy);
+    font-size: 13.5px;
+    line-height: 1.65;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .doc-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .institution {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .doc-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+  }
+  .doc-header h1 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .doc-header .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .patient-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 18px;
+  }
+  .patient-strip .ps-item {
+    padding: 8px 12px;
+    border-right: 1px solid var(--border);
+  }
+  .patient-strip .ps-item:last-child { border-right: none; }
+  .ps-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .ps-value {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  /* ── URGENT ALERT ── */
+  .urgent-alert {
+    background: white;
+    color: #1a1a1a;
+    border: 2px solid #A32D2D;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .urgent-alert .ua-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #A32D2D;
+    color: white;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+  }
+  .urgent-alert .ua-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    padding: 12px 14px 10px;
+    border-bottom: 0.5px solid #F7C1C1;
+    color: #1a1a1a;
+  }
+  .urgent-alert .ua-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    min-width: 3px;
+    height: 16px;
+    background: #A32D2D;
+    border-radius: 2px;
+  }
+  .urgent-alert .ua-body {
+    font-size: 12.5px;
+    line-height: 1.65;
+    padding: 12px 14px 14px;
+    color: #1a1a1a;
+  }
+  .urgent-alert .ua-body ul {
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ── LEPTOMENINGEAL ALERT ── */
+  .lepto-alert {
+    background: white;
+    color: #1a1a1a;
+    border: 2px solid #791F1F;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .lepto-alert .la-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #791F1F;
+    color: white;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+  }
+  .lepto-alert .la-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    padding: 12px 14px 10px;
+    border-bottom: 0.5px solid #F7C1C1;
+    color: #1a1a1a;
+  }
+  .lepto-alert .la-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    min-width: 3px;
+    height: 16px;
+    background: #791F1F;
+    border-radius: 2px;
+  }
+  .lepto-alert .la-body {
+    font-size: 12.5px;
+    line-height: 1.65;
+    padding: 12px 14px 14px;
+    color: #1a1a1a;
+  }
+  .date-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    background: #FCEBEB;
+    color: #791F1F;
+    border: 0.5px solid #F7C1C1;
+    border-radius: 999px;
+    padding: 2px 8px;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-family: var(--mono);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: -.01em;
+  }
+
+  /* ── PATIENT INFO GRID ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .info-block { }
+  .info-block h4 {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .info-row {
+    display: flex;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 12.5px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .ir-label { color: var(--muted); width: 130px; flex-shrink: 0; }
+  .ir-value { color: var(--navy); font-weight: 500; }
+
+  /* ── CLINICAL SUMMARY PROSE ── */
+  .clinical-prose {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--slate);
+  }
+  .clinical-prose p { margin-bottom: 12px; }
+  .clinical-prose strong { color: var(--navy); }
+  .clinical-prose .highlight {
+    background: var(--red-light);
+    border-left: 3px solid var(--red);
+    padding: 10px 14px;
+    margin: 14px 0;
+    border-radius: 0 3px 3px 0;
+    font-size: 13px;
+  }
+
+  /* ── TWO COLUMN ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* ── STAT BOXES ── */
+  .stat-box {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 12px 14px;
+  }
+  .stat-box.red { border-color: #fca5a5; background: var(--red-light); }
+  .stat-box.amber { border-color: #fcd34d; background: var(--amber-light); }
+  .stat-box.green { border-color: #86efac; background: var(--green-light); }
+  .stat-box .sb-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .stat-box .sb-value {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .stat-box.red .sb-value { color: var(--red); }
+  .stat-box.amber .sb-value { color: var(--amber); }
+  .stat-box.green .sb-value { color: var(--green); }
+  .stat-box .sb-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* ── LESION TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  thead tr {
+    border-bottom: 1.5px solid var(--navy);
+  }
+  thead th {
+    padding: 7px 10px;
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td {
+    padding: 8px 10px;
+    vertical-align: top;
+    line-height: 1.45;
+  }
+  tbody tr:hover { background: #f8fafc; }
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 2px;
+    background: #e2e8f0;
+    color: var(--slate);
+    white-space: nowrap;
+  }
+  .pill.red { background: var(--red-mid); color: var(--red); }
+  .pill.green { background: #dcfce7; color: var(--green); }
+  .pill.amber { background: #fef3c7; color: var(--amber); }
+  .row-flag td { background: var(--red-light); }
+  .row-flag td:first-child { border-left: 2px solid var(--red); }
+  .row-gap td { background: var(--amber-light); }
+  .row-gap td:first-child { border-left: 2px solid var(--amber); }
+  .row-good td { background: var(--green-light); }
+  .row-good td:first-child { border-left: 2px solid var(--green); }
+
+  /* ── TREATMENT HISTORY ── */
+  .treatment-list { display: grid; gap: 8px; }
+  .tx-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .tx-row:last-child { border-bottom: none; }
+  .tx-date {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+  .tx-body strong { display: block; color: var(--navy); font-size: 13px; margin-bottom: 2px; }
+  .tx-body span { color: var(--slate); }
+
+  /* ── WHAT IS NEEDED ── */
+  .need-list { display: grid; gap: 10px; }
+  .need-row {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+  .need-row.urgent { border-color: #fca5a5; background: var(--red-light); }
+  .need-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    opacity: .25;
+    padding-top: 1px;
+  }
+  .need-body strong { display: block; font-size: 13px; margin-bottom: 2px; }
+  .need-body span { font-size: 12px; color: var(--slate); }
+
+  /* ── RECORDS GAP ── */
+  .gap-box {
+    border: 1.5px solid #fcd34d;
+    background: var(--amber-light);
+    border-radius: 3px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .gap-box .gb-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 5px;
+  }
+  .gap-box .gb-body { font-size: 12.5px; color: var(--slate); line-height: 1.6; }
+
+  /* ── ACTION ITEM ── */
+  .action-box {
+    border: 1.5px solid #93c5fd;
+    background: #eff6ff;
+    border-radius: 3px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .action-box .ab-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #1d4ed8;
+    margin-bottom: 5px;
+  }
+  .action-box .ab-body { font-size: 12.5px; color: var(--slate); line-height: 1.6; }
+
+  /* ── MOLECULAR ── */
+  .mol-row {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+    align-items: baseline;
+  }
+  .mol-row:last-child { border-bottom: none; }
+  .mol-name { width: 180px; flex-shrink: 0; font-weight: 500; }
+  .mol-result { flex: 1; }
+  .mol-note { font-size: 11px; color: var(--muted); }
+
+  /* ── CONTACTS ── */
+  .contact-table { width: 100%; }
+  .contact-table td { padding: 6px 10px; font-size: 12.5px; border-bottom: 1px solid var(--border); }
+  .contact-table td:first-child { font-weight: 500; width: 180px; }
+  .contact-table td:last-child { font-family: var(--mono); font-size: 11.5px; color: #1d4ed8; }
+
+  /* ── RECORDS TABLE ── */
+  .records-table { width: 100%; }
+  .records-table th { background: #f1f5f9; }
+
+  /* ── PAGE BREAK ── */
+  .page-break { 
+    border: none; 
+    border-top: 1px dashed var(--border); 
+    margin: 32px 0; 
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--muted);
+  }
+
+  /* ── DOC LINK ── */
+  .doc-link {
+    color: #1d4ed8;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    border-bottom: 1px solid #bfdbfe;
+  }
+  .doc-link:hover { border-bottom-color: #1d4ed8; }
+
+  @media print {
+    body { padding: 24px 28px; font-size: 12px; }
+    .urgent-alert { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .urgent-alert .ua-label { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lepto-alert { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lepto-alert .la-label { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stat-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="doc-header">
+  <div class="doc-meta">
+    <div class="institution">MD Anderson Cancer Center — Tumor Board Submission</div>
+    <div class="doc-type">Prepared by Patient / Family · May 26, 2026<br><span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);font-weight:600">Full Clinical Reference:</span> <a href="https://claude.ai/public/artifacts/632bc266-bf01-4233-a03c-ea09d7a7116b" target="_blank" style="font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#1d4ed8;font-weight:600;text-decoration:underline;text-underline-offset:2px">Clinical Decision Summary ↗</a></div>
+  </div>
+  <h1>Karen Clayborne — Tumor Board Review Request</h1>
+  <div class="subtitle">Stage IV Lung Adenocarcinoma · EGFR Exon 19 del · Active CNS Metastasis · Progressive despite SRS × 2 and Osimertinib</div>
+  <div class="patient-strip">
+    <div class="ps-item"><div class="ps-label">Patient</div><div class="ps-value">Karen Clayborne</div></div>
+    <div class="ps-item"><div class="ps-label">DOB / Age</div><div class="ps-value">01/11/1966 · 60 yrs</div></div>
+    <div class="ps-item"><div class="ps-label">MRN (UH)</div><div class="ps-value">71441088</div></div>
+    <div class="ps-item"><div class="ps-label">Current Location</div><div class="ps-value">Home · 19535 Crystal Oak, San Antonio TX 78258</div></div>
+    <div class="ps-item"><div class="ps-label">Family Coordinators</div><div class="ps-value">Carol Clayborne Porter (Houston) · (832) 963-6234<br>Kellie Maxwell (San Antonio) · (210) 313-0010</div></div>
+  </div>
+</div>
+
+<!-- URGENT ALERT -->
+<div class="urgent-alert">
+  <div class="ua-label">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    Urgent — Tumor Board Priority
+  </div>
+  <div class="ua-title">Active brainstem compression with acute neurological decline — decision required</div>
+  <div class="ua-body">
+    <ul>
+      <li>60-year-old female with Stage IV EGFR Exon 19 del NSCLC. Progressive cerebellar and posterior fossa metastases refractory to two courses of SRS and ongoing osimertinib. Admitted 05/23/2026 with acute dysarthria, dysphagia, left-sided weakness, and ataxia.</li>
+      <li>Dominant cerebellar vermis lesion last formally measured <strong>2.6 cm (Apr 10, 2026)</strong> with confirmed further growth on May 24 ER MRI. A second cerebellar mass measures <strong>1.6 × 2.1 cm.</strong> Six or more total lesions. Brainstem compression confirmed.</li>
+      <li>Disease is now <strong>CNS-dominant.</strong> Spine and systemic staging (05/25/2026) confirmed no active metastases outside the CNS. At 60 years old with preserved systemic status, she remains a reasonable candidate for aggressive CNS-directed intervention.</li>
+      <li><strong>Central question for tumor board consideration:</strong> In a patient with CNS-dominant EGFR Exon 19 del / germline BRCA2 co-mutated adenocarcinoma progressing on third-generation EGFR therapy with active brainstem compression and acute neurological decline, what is the appropriate next intervention — salvage SRS, surgical resection, systemic therapy modification, or clinical trial enrollment? This question exceeds the scope of community oncology and requires multidisciplinary subspecialty input.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- LEPTOMENINGEAL ALERT -->
+<div class="lepto-alert">
+  <div class="la-label">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    New Finding — Not in Radiologist Report
+  </div>
+  <div class="la-title"><span class="date-pill">05/25/2026</span>Leptomeningeal disease identified — Dr. Jason Boulter MD, Neurosurgery</div>
+  <div class="la-body">
+    <p>Independent review of the May 24, 2026 MRI Brain demonstrated <strong>enhancement extending in a spiculated pattern along the cerebellar folia from the dominant vermis lesion — consistent with leptomeningeal disease.</strong> This finding is not documented in the radiologist's written impression (Dr. David Wood, signed 05/24/2026). It was the primary basis for Dr. Boulter's exclusion of surgical candidacy — resection was determined to offer <strong>little to no meaningful survival benefit</strong> given leptomeningeal extension. <strong>Dedicated leptomeningeal workup (LP/CSF cytology) has not been performed</strong> and should be considered in treatment planning.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: PATIENT INFORMATION -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Patient Information</span>
+  </div>
+  <div class="info-grid">
+    <div class="info-block">
+      <h4>Demographics</h4>
+      <div class="info-row"><span class="ir-label">Full Name</span><span class="ir-value">Karen Clayborne</span></div>
+      <div class="info-row"><span class="ir-label">Date of Birth</span><span class="ir-value">January 11, 1966 (Age 60)</span></div>
+      <div class="info-row"><span class="ir-label">Sex</span><span class="ir-value">Female</span></div>
+      <div class="info-row"><span class="ir-label">Race / Ethnicity</span><span class="ir-value">White / Not Hispanic or Latino</span></div>
+      <div class="info-row"><span class="ir-label">Marital Status</span><span class="ir-value">Single · Lives with mother</span></div>
+      <div class="info-row"><span class="ir-label">Address</span><span class="ir-value">19535 Crystal Oak, San Antonio TX 78258</span></div>
+      <div class="info-row"><span class="ir-label">Phone</span><span class="ir-value">(210) 895-0906</span></div>
+      <div class="info-row"><span class="ir-label">Email</span><span class="ir-value">kclayborne1966@gmail.com</span></div>
+      <div class="info-row"><span class="ir-label">Smoking</span><span class="ir-value">Never smoker · No passive exposure</span></div>
+    </div>
+    <div class="info-block">
+      <h4>Current Clinical Status</h4>
+      <div class="info-row"><span class="ir-label">Discharged</span><span class="ir-value">05/28/2026 · Home · 19535 Crystal Oak, San Antonio TX 78258</span></div>
+      <div class="info-row"><span class="ir-label">Last Admission</span><span class="ir-value">05/23–05/28/2026 · Methodist Hospital Stone Oak · Acct K509976683</span></div>
+      <div class="info-row"><span class="ir-label">Account / Room</span><span class="ir-value">K509976683 · Room K.327</span></div>
+      <div class="info-row"><span class="ir-label">Attending</span><span class="ir-value">Dr. Neel M. Shah, DO (Heme/Onc)</span></div>
+      <div class="info-row"><span class="ir-label">KPS at Apr 16</span><span class="ir-value">70 (Dr. Kelly) · 90 (Dr. Dalwadi)</span></div>
+      <div class="info-row"><span class="ir-label">Insurance</span><span class="ir-value">Ambetter (Superior HealthPlan) — primary active · Medicare (assigned age 60) · UnitedHealthcare Community Plan · Financial counseling coordination pending MD Anderson intake</span></div>
+      <div class="info-row"><span class="ir-label">MRN (UH)</span><span class="ir-value">71441088</span></div>
+      <div class="info-row"><span class="ir-label">MRN (Mays / BKR)</span><span class="ir-value">60937438</span></div>
+      <div class="info-row"><span class="ir-label">PCP</span><span class="ir-value">Dr. Sudhir Gogu, DO</span></div>
+    </div>
+    <div class="info-block">
+      <h4>Emergency Contacts</h4>
+      <div class="info-row"><span class="ir-label">Primary Coordinator</span><span class="ir-value"><strong>Carol Clayborne Porter</strong> (Sister) · Surrogate DM · Houston, TX · (832) 963-6234</span></div>
+      <div class="info-row"><span class="ir-label">Secondary Contact</span><span class="ir-value">Kellie Maxwell (Sister) · San Antonio · (210) 313-0010</span></div>
+      <div class="info-row"><span class="ir-label">Sister</span><span class="ir-value">Kimberly Clayborne · (832) 885-7245</span></div>
+      <div class="info-row"><span class="ir-label">Mother (lives w/ pt)</span><span class="ir-value">Jean Howelton Clayborne Thomas · (210) 974-1663</span></div>
+    </div>
+    <div class="info-block">
+      <h4>Past Surgical History</h4>
+      <div class="info-row"><span class="ir-label">2005</span><span class="ir-value">Myomectomy</span></div>
+      <div class="info-row"><span class="ir-label">Sep 27, 2024</span><span class="ir-value">Right chest thoracentesis · Dr. Gabino Miranda · Pathology: adenocarcinoma metastatic from lung primary (CK7+, TTF-1+, p16+)</span></div>
+      <h4 style="margin-top:14px">Family History</h4>
+      <div class="info-row"><span class="ir-label">Father</span><span class="ir-value">Esophageal cancer</span></div>
+      <div class="info-row"><span class="ir-label">Pat. Grandfather</span><span class="ir-value">Lung cancer — relevant to germline BRCA2</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- SECTION 2: CLINICAL SUMMARY -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Clinical Summary</span>
+  </div>
+  <div class="clinical-prose">
+    <p>Karen Clayborne is a 60-year-old never-smoking female with <strong>Stage IV non-small cell lung adenocarcinoma (EGFR Exon 19 deletion)</strong> diagnosed in October 2024 following evaluation of a persistent cough. Initial CT chest showed a dominant right hilar mass (8.8 × 7.5 × 7.7 cm) with pleural effusion, T3 and T9 vertebral lesions, and liver hypodensities. Thoracentesis confirmed malignant cells consistent with lung primary adenocarcinoma.</p>
+
+    <p>She was initially treated with <strong>amivantamab + lazertinib</strong> (November 2024, patient-preferred chemo-free regimen, Dr. Krishna Alluri, Texas Oncology). Systemic response was partial — CT TAP February 2025 showed partial response. However, she subsequently developed <strong>CNS metastasis</strong>, discovered February–March 2025, with a dominant cerebellar vermis lesion measuring 3.1 × 2.4 × 3.0 cm with 4th ventricle effacement. The April 1–3, 2025 hospitalization at Northeast Baptist formally confirmed the lesion and initiated SRS planning —
+    <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-1-2025%20to%2004-3-2025%20PGS%201-50.pdf" target="_blank">CCD pg 1–50</a>
+    <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-1-2025%20to%2004-3-2025%20PGS%2051-100.pdf" target="_blank">pg 51–100</a>
+    <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%20%2004-1-2025%20to%2004-3-2025%20PGS%20101-128.pdf" target="_blank">pg 101–128</a></p>
+
+    <p><strong>SRS Course 1</strong> (30 Gy / 5 fractions, April–May 2025, TXO / Dr. Dzuick) produced an excellent initial response — lesion reduced to 1.0 × 0.6 × 1.0 cm by June 2025. However, regrowth was confirmed by August 2025 (1.4 cm), with further progression to 1.9 × 1.7 cm by November 2025 and a new right frontal mass (0.7 × 0.8 cm)* appearing.</p>
+
+    <p>In May 2025, she was transitioned to <strong>osimertinib (Tagrisso) 80 mg daily</strong> after declining rechallenge with lazertinib and amivantamab. Of particular note, TEMPUS and Guardant360 testing confirmed a <strong>germline BRCA2 variant (F2560fs, VAF 48.8%)</strong> — an uncommon co-mutation in EGFR-driven lung adenocarcinoma that may carry independent therapeutic relevance, including potential eligibility for PARP inhibitor combinations or BRCA2-directed clinical trials not available in the community setting. Genetic counseling and family testing have been recommended but not yet completed. She has also had a DVT (peroneal vein, May 2025), pulmonary embolism (May 2025), IJ occlusive DVT (June 2025), and recurrent bilateral PE (March 2026), for which she remains on lifelong apixaban.</p>
+
+    <p><strong>SRS Course 2</strong> (27 Gy / 3 fractions, February 4–6, 2026, Dr. Dalwadi, Mays Cancer Center) targeted the left frontal lesion only. The dominant vermis lesion was deliberately excluded from treatment per neuro-oncology tumor board decision on February 6, 2026, with a plan to watch. The left frontal lesion has since responded well (↓ to 9 mm by April 10, 2026).</p>
+
+    <div class="highlight">The dominant cerebellar vermis lesion, which has never received definitive treatment at full dose, has continued to progress: 2.2 × 2.6 × 2.2 cm as of April 10, 2026 (last formal measurement), with confirmed further growth on May 24, 2026 ER MRI. A second cerebellar mass (left lower cerebellum) measures 1.6 × 2.1 cm. Multiple additional subcentimeter lesions are present bilaterally. The patient is now admitted with acute dysarthria, dysphagia, left-sided weakness, and ataxia — all consistent with active posterior fossa mass effect.</div>
+
+    <p>Staging on May 25, 2026 (MRI C/T/L spine + CT chest/abdomen/pelvis) confirmed <strong>no active spinal or systemic metastases</strong>. Prior T9 and L3 changes represent chronic/treated disease. The right lung primary shows post-treatment changes without recurrence. The disease burden is now entirely CNS-dominant, making CNS-directed decision-making the immediate priority.</p>
+
+    <p><strong>⚠ Leptomeningeal Disease — Newly Identified:</strong> On May 25, 2026, Dr. Jason Boulter MD (Neurosurgery) identified enhancement extending in a spiculated pattern along the cerebellar folia from the dominant vermis lesion on independent review of the May 24 MRI Brain — findings consistent with leptomeningeal disease. This finding is <strong>not documented in the radiologist's written impression</strong> (Dr. David Wood, signed 05/24/2026). Dr. Boulter explicitly cited this finding as the primary basis for excluding surgical candidacy, stating that resection "would offer little to no meaningful survival benefit" given the leptomeningeal extension. Dedicated leptomeningeal workup — including lumbar puncture and CSF cytology — has not been performed. This finding should be formally confirmed and considered in all treatment planning discussions.</p>
+
+    <p>Multiple providers have formally documented concern about <strong>care continuity</strong> across multiple institutions. Family is engaged and supportive. As of 05/26/2026, <strong>Carol Clayborne Porter serves as surrogate decision-maker.</strong> Importantly, Karen was <strong>KPS 90 as recently as April 14, 2026</strong> — six weeks before this admission — indicating that her functional decline is acute and CNS-driven, not a reflection of underlying systemic deterioration. At 60 years old with no active systemic disease, she remains a reasonable candidate for aggressive CNS-directed intervention.</p>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- SECTION 3: CNS DISEASE STATUS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">CNS Disease Status — Current</span>
+  </div>
+
+  <div class="three-col" style="margin-bottom:20px">
+    <div class="stat-box red">
+      <div class="sb-label">Dominant Lesion (Vermis)</div>
+      <div class="sb-value">2.6 cm</div>
+      <div class="sb-note">Last formally measured Apr 10, 2026 · Confirmed further growth May 24 · Not re-measured (ER protocol) · <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20W%20AND%20WO%20IV%20CONTRAST%20-%20DALWADI%204-10-2026.pdf" target="_blank">PDF</a></div>
+    </div>
+    <div class="stat-box red">
+      <div class="sb-label">Second Lesion (L Cerebellar)</div>
+      <div class="sb-value">2.1 cm</div>
+      <div class="sb-note">1.6 × 2.1 cm · Measured May 24, 2026 · Methodist Stone Oak MRI</div>
+    </div>
+    <div class="stat-box amber">
+      <div class="sb-label">Additional Lesions</div>
+      <div class="sb-value">4+ more</div>
+      <div class="sb-note">Bilateral cerebellar + bilateral frontal/parietal subcentimeter · Bilateral occipital nodules (2–3 mm)</div>
+    </div>
+    <div class="stat-box red">
+      <div class="sb-label">Brainstem Compression</div>
+      <div class="sb-value">Confirmed</div>
+      <div class="sb-note">CT Head 05/24: posterior fossa mass effect + mild ventricular dilatation</div>
+    </div>
+    <div class="stat-box" style="background:#f9edf9;border-color:#c060d0">
+      <div class="sb-label" style="color:#7b2d8b">Leptomeningeal Disease</div>
+      <div class="sb-value" style="color:#7b2d8b">Confirmed ⚠</div>
+      <div class="sb-note">Spiculated folia enhancement — Dr. Boulter NSGY 05/25 · Basis for surgical exclusion · LP not performed</div>
+    </div>
+    <div class="stat-box green">
+      <div class="sb-label">Spine Metastases</div>
+      <div class="sb-value">None Active</div>
+      <div class="sb-note">MRI C/T/L spine 05/25: no metastatic disease · T9/L3 = chronic/treated</div>
+    </div>
+    <div class="stat-box green">
+      <div class="sb-label">Systemic Metastases</div>
+      <div class="sb-value">None Active</div>
+      <div class="sb-note">CT CAP 05/25: no active metastasis · Right lung = post-treatment changes</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Dominant Lesion (Vermis)</th>
+        <th>Other Lesions</th>
+        <th>Total</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="">
+        <td style="font-family:var(--mono);white-space:nowrap">Jun 12, 2025</td>
+        <td><span class="pill green">1.0 × 0.6 × 1.0 cm ✓ Best response</span></td>
+        <td style="color:var(--muted)">None</td>
+        <td style="text-align:center">1</td>
+        <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-6-12-2025.pdf" target="_blank">MRI 6-12-25</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">Aug 8, 2025</td>
+        <td><span class="pill amber">1.4 cm ↑ Regrowth</span></td>
+        <td style="color:var(--muted)">None</td>
+        <td style="text-align:center">1</td>
+        <td><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/MRI-Brain-Baptist-MS-Imaging.pdf" target="_blank">MRI 8-8-25</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">Nov 12, 2025</td>
+        <td><span class="pill amber">1.9 × 1.7 cm ↑</span></td>
+        <td>R frontal: 0.7 × 0.8 cm (new)*</td>
+        <td style="text-align:center">2</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MRI-Brain-Baptist-MS-Imaging-1.pdf" target="_blank">MRI 11-12-25</a></td>
+      </tr>
+      <tr>
+        <td colspan="5" style="font-size:10px;color:var(--muted);padding:4px 10px;font-style:italic">*Nov 9 Baptist ER CT identified a left frontal lesion (1 cm); Nov 12 MRI identifies a right frontal mass (0.7 × 0.8 cm). May represent two separate lesions or a laterality discrepancy. Radiological reconciliation recommended.</td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap;font-style:italic;color:var(--muted)" colspan="5" style="background:#fffbeb;padding:6px 10px">Feb 4–6, 2026 — SRS Course 2: Left frontal lesion treated (27 Gy / 3 fx, Dr. Dalwadi, Mays). Dominant vermis not treated per tumor board decision 2/6/2026.</td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">Apr 10, 2026</td>
+        <td><span class="pill red">2.2 × 2.6 × 2.2 cm ↑</span> <strong style="font-size:10px">Last formal measurement</strong></td>
+        <td>L cerebellar: 1.1 × 1.0 × 1.1 cm · L frontal: ↓ 9 mm (SRS response) · New: bilateral occipital nodules 2–3 mm</td>
+        <td style="text-align:center;font-weight:600;color:var(--red)">4+</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20W%20AND%20WO%20IV%20CONTRAST%20-%20DALWADI%204-10-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr class="row-flag">
+        <td style="font-family:var(--mono);white-space:nowrap;font-weight:600">May 24, 2026</td>
+        <td><strong>Further growth confirmed</strong> · Not re-measured · ER MRI addressed acute risk (brainstem compression, hemorrhage, herniation), not tumor dimensions</td>
+        <td>L cerebellar: 1.6 × 2.1 cm · Multiple subcentimeter bilateral cerebellar + frontal/parietal</td>
+        <td style="text-align:center;font-weight:600;color:var(--red)">6+</td>
+        <td>
+          <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-24-2026.pdf" target="_blank">CT Head</a> ·
+          <span style="font-size:10px;color:var(--muted)">Standalone PDF confirmed unavailable through patient-facing channels (05/31/2026) · Full report text in Stone Oak CCD · MD Anderson may request directly from HIM: (844) 481-0278</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- STONE OAK ADMISSION IMAGING -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">↳</span>
+    <span class="section-title">Current Admission Imaging — Methodist Stone Oak (05/23–05/25/2026)</span>
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Study</th>
+        <th>Finding</th>
+        <th>Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">05/23/2026</td>
+        <td>CT Head (a)</td>
+        <td>Initial ER arrival — no acute abnormality</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-23-2026%20-%20b.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">05/23/2026</td>
+        <td>CT Head (b)</td>
+        <td>Second CT Head study</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-23-2026%20-%20c.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">05/23/2026</td>
+        <td>MRA Head vessels W/W-O Contrast</td>
+        <td>Vascular assessment</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MRA%20Head%20vessels%20WO%20and%20W%20contrast%20IV%205-23-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">05/23/2026</td>
+        <td>XR Chest Views</td>
+        <td>Chest X-ray on admission</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/XR%20Chest%20Views%205-23-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr class="row-flag">
+        <td style="font-family:var(--mono);white-space:nowrap">05/24/2026</td>
+        <td>CT Head W-O Contrast</td>
+        <td>Posterior fossa metastases with mass effect · Mild ventricular dilatation · Dr. Kenneth Sandoval MD</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Head%205-24-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr class="row-flag">
+        <td style="font-family:var(--mono);white-space:nowrap">05/24/2026</td>
+        <td>MRI Brain W/W-O Contrast</td>
+        <td>Multiple parenchymal mets · Largest inferior vermis/cerebellum · Bilateral cerebellar vasogenic edema · No foraminal herniation · Leptomeningeal disease identified on NSGY review · Dr. David Wood MD</td>
+        <td><span style="font-size:10px;color:var(--amber)">Not yet obtained · HIM: (844) 481-0278</span></td>
+      </tr>
+      <tr class="">
+        <td style="font-family:var(--mono);white-space:nowrap">05/25/2026</td>
+        <td>MRI C/T/L Spine W/W-O</td>
+        <td>✅ NO metastatic disease · T9: hemangioma + chronic fx · L3: chronic · Dr. Dipan Patel MD</td>
+        <td>
+          <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Thoracic%20spine%20WO%20and%20W%20contrast%20IV.pdf" target="_blank">Thoracic</a> ·
+          <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Cervical%20spine%205-25-2026.pdf" target="_blank">Cervical</a> ·
+          <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20Lumbar%20spine%205-25-2026.pdf" target="_blank">Lumbar</a>
+        </td>
+      </tr>
+      <tr class="">
+        <td style="font-family:var(--mono);white-space:nowrap">05/25/2026</td>
+        <td>CT Chest/Abdomen/Pelvis</td>
+        <td>✅ NO active systemic metastasis · Right lung: post-treatment · T3/T9: sclerosis = treated disease · No liver/LN mets · Dr. Travis Lyons MD</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20Abdomen%20and%20Pelvis%20WO%20and%20W%20contrast%20IV%205-25-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+<hr class="page-break">
+
+<!-- SECTION 4: MOLECULAR PROFILE -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">Molecular Profile</span>
+  </div>
+  <div class="mol-row">
+    <span class="mol-name">Primary Driver</span>
+    <span class="mol-result"><strong>EGFR Exon 19 deletion</strong> · Inframe deletion, VAF 1.4%</span>
+    <span class="mol-note">TEMPUS xF+ · 10/18/2024 · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/10-29-2024-TEMPUS%20DNA%20REPORT.pdf" target="_blank">Report</a></span>
+  </div>
+  <div class="mol-row">
+    <span class="mol-name">Co-Mutation</span>
+    <span class="mol-result"><strong>BRCA2 F2560fs · VAF 48.8%</strong> — suspected germline variant · Pathogenic</span>
+    <span class="mol-note">TEMPUS + Guardant360 confirmed · Genetic testing for patient and family recommended</span>
+  </div>
+  <div class="mol-row">
+    <span class="mol-name">Additional Alterations</span>
+    <span class="mol-result">BCOR · VUS in NOTCH, KMT2C, SLFN11, CHEK, FGFR1, KDM4A</span>
+    <span class="mol-note">Guardant360 4/23/2025 · TMB 5 mut/MB · MSS</span>
+  </div>
+  <div class="mol-row">
+    <span class="mol-name">Liquid Biopsy</span>
+    <span class="mol-result">Guardant360 · BRCA2 + BCOR confirmed</span>
+    <span class="mol-note"><a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/4-23-2025-Guardant360%20panel.pdf" target="_blank">Panel 04/23/2025</a></span>
+  </div>
+  <div class="mol-row">
+    <span class="mol-name">Pathology</span>
+    <span class="mol-result">Lung adenocarcinoma metastatic · CK7+, TTF-1+, p16+</span>
+    <span class="mol-note">Pleural fluid, right thoracentesis 09/27/2024 · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/texas-oncology/4-23-2025-Pathology%20report.pdf" target="_blank">Pathology report</a></span>
+  </div>
+  <div class="mol-row">
+    <span class="mol-name">Current Systemic Rx</span>
+    <span class="mol-result"><strong>Osimertinib (Tagrisso) 80 mg daily</strong> — since May 2025</span>
+    <span class="mol-note">CNS continues to progress on therapy · Systemic disease stable/treated</span>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- SECTION 5: TREATMENT HISTORY -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <span class="section-title">Treatment History — CNS</span>
+  </div>
+  <div class="treatment-list">
+    <div class="tx-row">
+      <div class="tx-date">Nov 2024 –<br>Apr 2025</div>
+      <div class="tx-body">
+        <strong>Amivantamab + Lazertinib (Systemic)</strong>
+        <span>Dr. Krishna Alluri, Texas Oncology · Patient-preferred chemo-free regimen · Mild infusion reaction D1, resolved D2 · Partial systemic response on CT TAP 2/8/2025 · Discontinued May 2025; patient declined rechallenge</span>
+      </div>
+    </div>
+    <div class="tx-row">
+      <div class="tx-date">Apr 14–25, 2025</div>
+      <div class="tx-body">
+        <strong>SRS Course 1 — Cerebellar Vermis · 30 Gy / 5 fractions</strong>
+        <span>TXO / Dr. Dzuick · Initial excellent response: 3.1 cm → 1.0 cm by June 2025 (68% reduction) · Regrowth confirmed August 2025 · <a class="doc-link" href="https://kdc-med-records.uk/mdanderson-two/storage/UPLOAD-SRS-SETTINGS.pdf" target="_blank">SRS Settings</a></span>
+      </div>
+    </div>
+    <div class="tx-row">
+      <div class="tx-date">May 2025 –<br>present</div>
+      <div class="tx-body">
+        <strong>Osimertinib (Tagrisso) 80 mg daily (Systemic)</strong>
+        <span>Third-generation EGFR inhibitor · Systemic disease stable/controlled · CNS continues to progress on therapy · Inpatient dose held pending NSGY clearance of Eliquis</span>
+      </div>
+    </div>
+    <div class="tx-row">
+      <div class="tx-date">Sep 2025 –<br>present</div>
+      <div class="tx-body">
+        <strong>Zoledronic acid (Zometa) — Skeletal Metastasis</strong>
+        <span>Ongoing · Spine lesions now showing treated/sclerotic changes on CT 05/25/2026</span>
+      </div>
+    </div>
+    <div class="tx-row">
+      <div class="tx-date">Feb 4–6, 2026</div>
+      <div class="tx-body">
+        <strong>SRS Course 2 — Left Frontal Lesion · 27 Gy / 3 fractions (SRT-VMAT)</strong>
+        <span>Dr. Shraddha Dalwadi, Mays Cancer Center · Left frontal lesion targeted only · Dominant vermis excluded per neuro-onc tumor board 2/6/2026 · Left frontal lesion response confirmed: ↓ to 9 mm by April 10, 2026 · <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/After%20Visit%20Summary%20-%20Dalwadi.pdf" target="_blank">Apr 14 Follow-up AVS</a> · <span style="color:var(--amber);font-size:11px">SRS treatment notes not yet obtained — request from Mays RadOnc: (210) 450-6058</span></span>
+      </div>
+    </div>
+    <div class="tx-row" style="background:var(--red-light);padding:10px 12px;border-radius:3px;border:1px solid #fca5a5">
+      <div class="tx-date" style="color:var(--red)">Apr 2026</div>
+      <div class="tx-body">
+        <strong style="color:var(--red)">Radiation declined by patient (April 14, 2026)</strong>
+        <span>Dr. Dalwadi recommended further radiation at April 14 follow-up. Patient declined at that time, stating she wanted a second opinion at MD Anderson in Houston. Radiation also declined at April 16 visit (Dr. Kelly). Patient has since been hospitalized (May 23, 2026) with acute neurological deterioration.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- SECTION 6: CURRENT STATUS + URGENCY -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">Current Status &amp; Urgency of Request</span>
+  </div>
+
+  <div class="clinical-prose" style="margin-bottom:20px">
+    <p>Karen was discharged from Methodist Hospital Stone Oak on 05/28/2026 following admission on 05/23/2026 with acute neurological deterioration including dysarthria, dysphagia, ataxia, left-sided weakness, and confusion. She is currently at home (19535 Crystal Oak, San Antonio TX 78258) requiring 24/7 supervision. Neurosurgery (Dr. Jason Boulter) and Medical Oncology (Dr. John Ogden) were consulted during the admission. Both recommended outpatient radiation as the next step. Dexamethasone 4 mg q8h at discharge. Tumor Board referral to MD Anderson is the immediate priority.</p>
+    <p><strong>Note — pre-admission ER visit:</strong> On the night of May 21–22, 2026, Karen presented to Northeast Baptist ER with headache and was discharged with a diagnosis of <strong>"General Headache Without Cause"</strong> (Dr. Mena MD, Miguel A, 05/22/2026 5:25 AM). This occurred less than 24 hours before her Stone Oak admission with acute brainstem compression and slurred speech. The patient had documented stage IV NSCLC with known brain metastases at the time of that visit. <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%205-22-2026.pdf" target="_blank">Discharge Record</a></p>
+    <p>The patient is steroid-dependent, has uncontrolled hypertension (peak BP 223/128 on admission), HbA1c of 9.8% (steroid-induced DM), and bilateral lower extremity edema. She requires 24-hour supervision and uses a walker for ambulation. Apixaban (Eliquis) was held at discharge per neurosurgery — restart status unresolved and urgently requires outpatient follow-up given bilateral PE history.</p>
+  </div>
+
+  <div class="need-list">
+    <div class="need-row urgent">
+      <div class="need-num">1</div>
+      <div class="need-body">
+        <strong>Tumor Board Review — CNS Treatment Strategy</strong>
+        <span>The dominant vermis lesion has never received definitive treatment. Post-SRS × 2 progression on osimertinib with active brainstem compression and acute neurological decline. Options requiring multidisciplinary input: repeat SRS, surgical resection candidacy, whole brain radiation, systemic therapy change (EGFR resistance evaluation), or clinical trial eligibility. Patient has expressed desire for MD Anderson second opinion since April 2026.</span>
+      </div>
+    </div>
+    <div class="need-row">
+      <div class="need-num">2</div>
+      <div class="need-body">
+        <strong>Neuro-Oncology Evaluation</strong>
+        <span>Active posterior fossa disease with brainstem compression, 6+ lesions, and progressive neurological decline. Requires dedicated neuro-oncology assessment for treatment planning and systemic therapy optimization.</span>
+      </div>
+    </div>
+    <div class="need-row">
+      <div class="need-num">3</div>
+      <div class="need-body">
+        <strong>Neurosurgery Assessment</strong>
+        <span>Surgical candidacy evaluation for the dominant 2.6 cm vermis lesion with mass effect. Local neurosurgery (Dr. Boulter) did not identify urgent surgical indication but deferred to oncologic team for definitive plan.</span>
+      </div>
+    </div>
+    <div class="need-row">
+      <div class="need-num">4</div>
+      <div class="need-body">
+        <strong>Radiation Oncology — Salvage Options</strong>
+        <span>Post-SRS × 2 with dominant lesion never irradiated at full dose. Salvage SRS, fractionated stereotactic radiotherapy, or other radiation strategies to be evaluated. Family is now actively seeking definitive guidance and coordinating care through MD Anderson.</span>
+      </div>
+    </div>
+    <div class="need-row">
+      <div class="need-num">5</div>
+      <div class="need-body">
+        <strong>Systemic Therapy Reassessment</strong>
+        <span>CNS progression on osimertinib warrants consideration of EGFR resistance mechanism evaluation (repeat liquid biopsy), alternative EGFR-directed therapy, or clinical trial enrollment. BRCA2 germline status may open additional therapeutic options.</span>
+      </div>
+    </div>
+    <div class="need-row" style="border-color:#86efac;background:var(--green-light)">
+      <div class="need-num" style="opacity:1;color:var(--green)">✓</div>
+      <div class="need-body">
+        <strong style="color:var(--green)">Family Coordination — Designated Point of Contact as of This Submission</strong>
+        <span>Karen's family has been present and supportive throughout her illness. However, the coordination demands of her case — across multiple institutions and specialists — have exceeded what could be managed without a single designated advocate. Effective with this submission, her sister <strong>Carol Clayborne Porter</strong> is formally stepping into that role as primary family coordinator and surrogate decision-maker. Carol is based in Houston and is positioned to coordinate Karen's care at MD Anderson directly, including accompanying her to appointments and serving as the consistent point of contact between the family and the care team. A second sister, <strong>Kellie Maxwell</strong> (San Antonio, (210) 313-0010), will support locally. The follow-through failures of the past reflect a system without a clear lead — that has now changed. Carol can be reached directly at <strong>(832) 963-6234</strong>.<br><br>
+        <strong>Note:</strong> As of 05/26/2026, the family is actively pursuing <strong>Medical Power of Attorney</strong> for Carol Clayborne Porter. This process has been initiated while Karen is currently inpatient at Methodist Hospital Stone Oak, where hospital social work staff are facilitating. MPOA documentation will be provided to MD Anderson upon execution.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- SECTION 7: RECORDS GAPS & IMAGING ACTION -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <span class="section-title">Records Gaps &amp; Imaging Action Items</span>
+  </div>
+
+  <div class="gap-box" style="background:white;border-color:#d6dde4">
+    <div class="gb-title" style="color:#085041">✅ Records Obtained — Northeast Baptist Hospital (Mar 29–Apr 7, 2026)</div>
+    <div class="gb-body">223-page Continuity of Care Document now on file. Admission included bilateral PE, mild/moderate hydrocephalus, thrombocytopenia, AKI, and metabolic encephalopathy. Records available in three sections:
+    <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%2003-29-2026%20to%2004-7-2026%201-75.pdf" target="_blank">pg 1–75</a>
+    <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%2003-29-2026%20to%2004-7-2026%2076-150.pdf" target="_blank">pg 76–150</a>
+    <a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/BAPTIST%20Summarization%20of%20Episode%20Note%2003-29-2026%20to%2004-7-2026%20151-223.pdf" target="_blank">pg 151–223</a></div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gb-title">⚠ Records Gap — MRI Brain April 10, 2026 (University Health)</div>
+    <div class="gb-body">MRI Brain W/W-O Contrast signed by Dr. Manoj Kumar (accession LI115551) showing vermis ↑ 2.2 × 2.6 × 2.2 cm — the last formally measured size before current admission. PDF not yet obtained. Contact University Health Radiology: <strong>(210) 358-8532</strong>.</div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gb-title">⚠ Records Gap — MRI Brain May 24, 2026 (Methodist Stone Oak)</div>
+    <div class="gb-body">MRI Brain W/W-O Contrast signed by Dr. David Wood confirming multiple parenchymal metastases with largest at inferior vermis/cerebellum. Full report text is embedded in the Continuity of Care Document already provided. Standalone PDF confirmed unavailable through patient-facing channels (verified with Methodist Stone Oak 05/31/2026). MD Anderson may request the original record directly from Methodist Stone Oak HIM: <strong>(844) 481-0278</strong> · Fax: (210) 638-3816.</div>
+  </div>
+
+  <div class="action-box">
+    <div class="ab-title">Action Required — MD Anderson Radiology Team · STRIC DICOM Imaging</div>
+    <div class="ab-body">STRIC (South Texas Radiology Imaging Centers) imaging is complete and fully extracted from two CDs in clean DICOM format (DICOMDIR + study folders), ready for upload. <strong>STRIC CD #1:</strong> DICOMDIR + 6 study folders. <strong>STRIC CD #2:</strong> DICOMDIR + DICOM folder. To proceed with radiology ingestion and Tumor Board routing, please provide a <strong>secure imaging upload link</strong> so these studies can be transmitted and ingested into PACS for radiology review, neuro-oncology review, and Tumor Board routing. Contact: STRIC (210) 617-9000 · Fax 210-616-7787 · DICOM CDs ready for immediate transfer.</div>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- UNIVERSITY HEALTH IMAGING — Jan 2026 + Additional -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">↳</span>
+    <span class="section-title">University Health Imaging — January 2026 Admission + Additional Studies</span>
+  </div>
+  <table style="width:100%;border-collapse:collapse;font-size:12px">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Study</th>
+        <th>Finding</th>
+        <th>Report</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">06/05/2025</td>
+        <td>CT Head W-O IV Contrast</td>
+        <td>Post-SRS assessment · University Health · ~6 weeks after SRS Course 1</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20HEAD%20WO%20IV%20CONTRAST%206-5-2025.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">01/23/2026</td>
+        <td>CT Abdomen/Pelvis W IV Contrast</td>
+        <td>During Jan 22–30 inpatient stay · Dr. Buschardt · University Health</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20ABDOMEN%20PELVIS%20W%20IV%20CONTRAST%20-%20BUSCHARDT%201-23-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr>
+        <td style="font-family:var(--mono);white-space:nowrap">01/23/2026</td>
+        <td>CT Chest W IV Contrast</td>
+        <td>During Jan 22–30 inpatient stay · Dr. Buschardt · University Health</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/CT%20CHEST%20W%20IV%20CONTRAST%20-%20BUSCHARDT%201-23-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr class="row-flag">
+        <td style="font-family:var(--mono);white-space:nowrap">01/24/2026</td>
+        <td>MRI Brain Perfusion W/W-O Contrast</td>
+        <td>Perfusion MRI during Jan 22–30 inpatient stay · Dr. Mahmoud · University Health · Clinically important for distinguishing radiation necrosis vs. true progression</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20PERFUSION%20WITH%20AND%20WITHOUT%20CONTRAST%20-%20MAHMOUD1-24-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+      <tr class="row-flag">
+        <td style="font-family:var(--mono);white-space:nowrap">04/10/2026</td>
+        <td>MRI Brain W/W-O IV Contrast</td>
+        <td>Last formally measured size · Vermis: 2.2 × 2.6 × 2.2 cm ↑ · L cerebellar: 1.1 × 1.0 × 1.1 cm ↑ · L frontal: ↓ 9 mm (SRS response) · New bilateral occipital nodules 2–3 mm · Dr. Dalwadi referral · University Health</td>
+        <td><a class="doc-link" href="https://raw.githubusercontent.com/ConnectEd360/-karen-clayborne-records/main/MR%20BRAIN%20W%20AND%20WO%20IV%20CONTRAST%20-%20DALWADI%204-10-2026.pdf" target="_blank">PDF</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 8: CONTACT & RECORDS LOCATIONS -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <span class="section-title">Contact &amp; Records Locations</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h4 style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Key Treating Providers</h4>
+      <table class="contact-table">
+        <tbody>
+          <tr><td>Dr. William Kelly, MD</td><td>Mays Med Onc · (210) 450-1000</td></tr>
+          <tr><td>Dr. Shraddha Dalwadi, MD</td><td>Mays Rad Onc · (210) 450-6490</td></tr>
+          <tr><td>Dr. Krishna Alluri, MD</td><td>Texas Oncology · (210) 656-7177</td></tr>
+          <tr><td>Dr. Neel Shah, DO</td><td>Methodist Stone Oak · (210) 638-2901</td></tr>
+          <tr><td>Dr. Jason Boulter, MD</td><td>NSGY Consult · Methodist Stone Oak</td></tr>
+          <tr><td>Dr. John Ogden, MD</td><td>Onc Consult · Methodist Stone Oak</td></tr>
+          <tr><td>Dr. Sudhir Gogu, DO</td><td>PCP · (210) 481-5598</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h4 style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Records &amp; Imaging Retrieval</h4>
+      <table class="contact-table">
+        <tbody>
+          <tr><td>Methodist Stone Oak (HCA)</td><td>(210) 638-2901 · HIM (844) 481-0278</td></tr>
+          <tr><td>Mays Cancer Center</td><td>(210) 450-1000 · Fax (210) 450-6058</td></tr>
+          <tr><td>University Health / UH</td><td>(210) 358-4000 · DICOM (210) 358-8532</td></tr>
+          <tr><td>Baptist M&S / STRIC</td><td>(210) 785-2590 · PowerShare capable</td></tr>
+          <tr><td>Northeast Baptist ⚠</td><td>(210) 297-2000 · Fax (210) 297-0217</td></tr>
+          <tr><td>Texas Oncology</td><td>(210) 595-5300 · Fax (210) 656-3687</td></tr>
+          <tr><td>Full clinical reference</td><td><a class="doc-link" href="https://claude.ai/public/artifacts/632bc266-bf01-4233-a03c-ea09d7a7116b" target="_blank">Clinical Decision Summary ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <span>Karen Clayborne · DOB 01/11/1966 · MRN 71441088 · Prepared by patient/family for MD Anderson Tumor Board · May 26, 2026</span>
+  <span>Full clinical reference: <a href="https://claude.ai/public/artifacts/632bc266-bf01-4233-a03c-ea09d7a7116b" target="_blank" style="color:inherit">Clinical Decision Summary ↗</a></span>
+</div>
+
+</body>
+</html>
